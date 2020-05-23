@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">xavier</string>
+
+    <!--default-->
+    <string name="imageView">ImageView</string>
+    <string name="defaultText">xavier</string>
+
+    <!--notification-->
+    <string name="channel_critical">Critical events</string>
+    <string name="channel_importance">Importance events</string>
+    <string name="channel_default">Default events</string>
+    <string name="channel_low">Low events</string>
+    <string name="channel_media">Media events</string>
+    <string name="show">show</string>
+
+    <!--user-->
+    <string name="tryItNow">立即体验</string>
+    <string name="disagree">不同意</string>
+    <string name="agree">同意</string>
+    <string name="newVersionFound">发现新版本</string>
+    <string name="upgradeImmediately">立即升级</string>
+    <string name="yang">￥</string>
+    <string name="_1000f">1000.00</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

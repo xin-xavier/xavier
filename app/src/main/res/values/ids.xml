@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="decorView" />
+    <item type="id" name="appbarLayout" />
+    <item type="id" name="appbarBg" />
+    <item type="id" name="toolbarLayoutContent" />
+    <item type="id" name="toolbarLayout" />
+    <item type="id" name="returnPager" />
+    <item type="id" name="toolbarTitle" />
+    <item type="id" name="navMenu" />
+</resources>

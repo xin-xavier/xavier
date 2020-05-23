@@ -1,0 +1,120 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion rootProject.ext.COMPILE_SDK_VERSION
+    buildToolsVersion rootProject.ext.BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId rootProject.ext.APPLICATION_ID
+        minSdkVersion rootProject.ext.MIN_SDK_VERSION
+        targetSdkVersion rootProject.ext.TARGET_SKD_VERSION
+
+        versionCode rootProject.ext.VERSION_CODE
+        versionName rootProject.ext.VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // Android Studio 默认生成的签名文件是 .jks 文件
+    // Eclipse 默认生成的签名文件是 .keystore 文件
+    // .jks和.keystore用来打包签名
+    // signingConfigs 需要写在 buildTypes 前面，不然编译的时候会报错
+    signingConfigs {
+        debug {//调试版本的签名配置
+            storeFile file('G:/XavierWorks/xavier/xavier/xavier-debug-app.jks')
+            keyPassword 'xavier'
+            keyAlias 'xin'
+            storePassword 'xavier'
+        }
+        release {
+            storeFile file('G:/XavierWorks/xavier/xavier/xavier-release-app.jks')
+            keyPassword 'xavier'
+            keyAlias 'xin'
+            storePassword 'xavier'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            //zipAlignEnabled true //是否优化zip
+            //shrinkResources true //移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled false //true开启混淆配置，false关闭
+            //zipAlignEnabled true //是否优化zip
+            //shrinkResources true //移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    //指定jdk版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    // ConstraintLayout
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'me.jessyan:autosize:1.2.1'
+
+    /**
+     * AndroidUtilCode
+     * github:
+     *  https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
+     */
+    // if u use AndroidX, use the following
+    implementation 'com.blankj:utilcodex:1.28.5'
+
+    /**
+     * statusbar 沉浸状态栏
+     * github:
+     *  https://jaeger.itscoder.com/android/2016/03/27/statusbar-util.html
+     */
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    /**
+     * okhttp3
+     * 官网
+     *  https://square.github.io/okhttp/
+     * github
+     *  https://github.com/square/okhttp/
+     * 使用(简书-基本使用)
+     *  https://www.jianshu.com/p/da4a806e599b
+     */
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    // 日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    // Retrofit通过GSON将结果转换为Bean对象
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    // scalars 数据解析器
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+    // 让Retrofit支持RxJava
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+    // RxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
+
+}

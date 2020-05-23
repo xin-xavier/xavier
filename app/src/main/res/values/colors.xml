@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--app-->
+    <color name="colorPrimary">@android:color/transparent</color>
+    <color name="colorPrimaryDark">@android:color/transparent</color>
+    <color name="colorAccent">#ff333333</color>
+
+    <!--常用-->
+    <color name="initial">#fff5f6f8</color>
+    <color name="mainOrange">#FFD0A147</color>
+
+    <!--用色码作名字-->
+    <!--b=黑色-->
+    <color name="b_14100E">#FF14100E</color>
+    <color name="b_666666">#ff666666</color>
+    <!--w=白色-->
+    <color name="w_f8f8f8">#fff8f8f8</color>
+
+    <!--skin-->
+    <color name="skin_title_select">#FFD0A147</color>
+    <color name="skin_title_unselect">#FF666666</color>
+    <color name="skin_indicator">#FFD0A147</color>
+
+</resources>
