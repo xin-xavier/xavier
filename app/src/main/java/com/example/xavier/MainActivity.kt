@@ -1,13 +1,20 @@
 package com.example.xavier
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.xavier.base.viewstratum.activity.SimpleDecorViewActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : SimpleDecorViewActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
+
+    override fun init() {
+    }
+
+    override fun onPrepare() {
+        setDefaultTitle(TAG)
     }
 
 }

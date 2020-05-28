@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.FragmentTransaction
+import com.blankj.utilcode.util.BarUtils
 import com.example.xavier.R
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 import com.example.xavier.utils.helper.ToolbarHelper
@@ -31,7 +32,7 @@ abstract class SimpleDecorViewActivity : SimpleActivty(), OnPrepareListener {
     override fun setContentView(@LayoutRes layoutResID: Int) {
         //  added the sub-activity layout id in parentLinearLayout
         inflater.inflate(layoutResID, parentLinearLayout, true)
-        initStatusBar()
+        immersionBar()
         init()
     }
 
@@ -56,8 +57,8 @@ abstract class SimpleDecorViewActivity : SimpleActivty(), OnPrepareListener {
         // xincaution 当没有设置具体宽高的获取到的值为0
         //val width = toolbarLayoutContent.layoutParams.width
         //Log.i(TAG, "onCreate: height = " + height + " == " + SizeUtils.dp2px(ConstantPool._40.toFloat()))
-        val appbarHeight: Int = statusBarHeight + height
-        appbarLayout.getLayoutParams().height = appbarHeight
+        val appbarHeight: Int = BarUtils.getStatusBarHeight() + height
+        appbarLayout.layoutParams.height = appbarHeight
 
         setToolbarResID(layoutToolbarResID())
     }
@@ -79,10 +80,6 @@ abstract class SimpleDecorViewActivity : SimpleActivty(), OnPrepareListener {
 
     open fun layoutToolbarResID(): Int {
         return R.layout.layout_init_toobar_view
-    }
-
-    // 默认空实现
-    override fun onPrepare() {
     }
 
     // 判断使用的是否是默认的 toolbarRes

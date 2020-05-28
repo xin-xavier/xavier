@@ -2,13 +2,17 @@ package com.example.xavier.app
 
 interface ConstantPool {
     companion object {
-        const val APP_NAME = "SkilTree";
+        const val APP_NAME = "Xavier";
 
         const val Http_TAG = "OKHttpClient: "
+
+        const val XAVIER = "Xavier";
 
         const val IDENTIFIER_NAME = "status_bar_height"
         const val DEF_TYPE = "dimen"
         const val ANDROID = "android"
+
+        const val CACHE_DIR = "cacheDir"
 
         const val ARG_PARAM_VIEW = "floatingActionButton"
         const val ARG_PARAM_ID = "pageItem"

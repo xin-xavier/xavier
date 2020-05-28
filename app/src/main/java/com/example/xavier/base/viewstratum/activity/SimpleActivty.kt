@@ -4,54 +4,47 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.example.xavier.R
 import com.example.xavier.app.AppManager
 import com.example.xavier.app.ConstantPool
 import com.example.xavier.base.viewstratum.presentation.UIPresentation
 import com.example.xavier.login.LoginActivity
-import com.example.xavier.utils.os.OSStatusBarUtil
-import com.jaeger.library.StatusBarUtil
-import kotlin.properties.Delegates
+import com.gyf.immersionbar.ImmersionBar
 
 abstract class SimpleActivty() : LifeLinksBaseActivity(),
     UIPresentation {
 
     protected lateinit var activity: Activity
     protected lateinit var context: Context
-    protected var statusBarHeight by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context = this
         activity = this
-
-        statusBarHeight = getStatusBarHeight(this)
     }
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        initStatusBar()
+        immersionBar()
         init()
     }
 
-    /**
-     * @method 获取状态栏高度
-     * @param context context
-     * @return 状态栏高度
-     */
-    private fun getStatusBarHeight(context: Context): Int {
-        val resourceId =
-            context.resources.getIdentifier(
-                ConstantPool.IDENTIFIER_NAME,
-                ConstantPool.DEF_TYPE,
-                ConstantPool.ANDROID
-            )
-        return context.resources.getDimensionPixelSize(resourceId)
-    }
-
     // 初始化状态栏
-    protected open fun initStatusBar() {
-        StatusBarUtil.setTransparentForImageView(activity, null)
-        OSStatusBarUtil.setImmersiveStatusBar(activity, true)
+    protected open fun immersionBar() {
+        /*ImmersionBar.with(activity)
+            //.transparentStatusBar()  //透明状态栏，不写默认透明色
+            //.statusBarColor(R.color.transparent)     //状态栏颜色，不写默认透明色
+            .statusBarColor(R.color.initial)     //状态栏颜色，不写默认透明色
+            .navigationBarColor(R.color.white) //透明状态栏和导航栏，不写默认状态栏为透明色，导航栏为黑色（设置此方法，fullScreen()方法自动为true）
+            .navigationBarDarkIcon(true) //导航栏图标是深色，不写默认为亮色
+            .autoDarkModeEnable(true) //自动状态栏字体和导航栏图标变色，必须指定状态栏颜色和导航栏颜色才可以自动变色哦
+            .init() //通过上面配置后初始化后方可成功调用*/
+        ImmersionBar.with(activity)
+            .transparentStatusBar() //透明状态栏，不写默认透明色
+            .statusBarDarkFont(true) //状态栏字体是深色，不写默认为亮色
+            .navigationBarColor(R.color.white) //透明状态栏和导航栏，不写默认状态栏为透明色，导航栏为黑色（设置此方法，fullScreen()方法自动为true）
+            .navigationBarDarkIcon(true) //导航栏图标是深色，不写默认为亮色
+            .init() //通过上面配置后初始化后方可成功调用
     }
 
 
@@ -92,7 +85,7 @@ abstract class SimpleActivty() : LifeLinksBaseActivity(),
      * @param clazz clazz
      * @param bundle bundle
      */
-    protected fun intentWhenLoggedin(clazz: Class<*>,bundle: Bundle) {
+    protected fun intentWhenLoggedin(clazz: Class<*>, bundle: Bundle) {
         //需要登录&&未登录
         if (AppManager.isLogin()) {
             startActivity(Intent(context, clazz))
