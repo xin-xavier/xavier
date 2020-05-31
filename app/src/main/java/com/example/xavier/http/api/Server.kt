@@ -1,9 +1,9 @@
 package com.example.xavier.http.api
 
-import com.example.xavier.app.ConstantPool.Companion.PAGE
-import com.example.xavier.app.ConstantPool.Companion.PID
 import com.example.xavier.bean.result.BaseData
 import com.example.prepotency.bean.result.*
+import com.example.xavier.app.api.FieldConstant.Companion.PAGE
+import com.example.xavier.app.api.FieldConstant.Companion.PID
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FieldMap

@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.blankj.utilcode.util.NetworkUtils;
 import com.example.xavier.BuildConfig;
-import com.example.xavier.app.ConstantPool;
+import com.example.xavier.app.api.ConstantPool;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-import static com.example.xavier.app.ConstantPool.CACHE_DIR;
+import static com.example.xavier.app.api.ConstantPool.CACHE_DIR;
 
 public class XavierHttpClient {
 

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.xavier.R
 import com.example.xavier.app.AppManager
-import com.example.xavier.app.ConstantPool
 import com.example.xavier.base.viewstratum.presentation.UIPresentation
 import com.example.xavier.login.LoginActivity
 import com.gyf.immersionbar.ImmersionBar

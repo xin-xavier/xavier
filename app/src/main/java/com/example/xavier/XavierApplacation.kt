@@ -6,7 +6,7 @@ import android.os.Build
 import androidx.multidex.MultiDex
 import com.blankj.utilcode.util.CrashUtils
 import com.blankj.utilcode.util.SPStaticUtils
-import com.example.xavier.app.ConstantPool.Companion.PUSH_STATUS
+import com.example.xavier.app.api.ConstantPool.Companion.PUSH_STATUS
 import com.example.xavier.app.notification.NotificationChannels
 import com.example.xavier.http.XavierHttpClient
 import com.scwang.smartrefresh.layout.SmartRefreshLayout

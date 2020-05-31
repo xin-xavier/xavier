@@ -6,9 +6,9 @@ import android.view.View
 import android.widget.ImageView
 import com.blankj.utilcode.util.ToastUtils
 import com.example.xavier.R
-import com.example.xavier.app.ConstantPool
-import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
+import com.example.xavier.app.api.ConstantPool
 import com.example.xavier.base.viewstratum.fragment.SimpleFragment
+import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 
 
 class ToolbarHelper : SimpleFragment, View.OnClickListener {
