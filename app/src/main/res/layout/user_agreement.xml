@@ -4,7 +4,7 @@
     android:layout_height="285dp"
     android:background="@drawable/cart_bg">
 
-    <com.example.prepotency.widght.LollipopFixedWebView
+    <com.example.xavier.widght.LollipopFixedWebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

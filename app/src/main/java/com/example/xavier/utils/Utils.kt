@@ -3,10 +3,13 @@ package com.example.xavier.utils
 import android.content.Context
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.DeviceUtils
-import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.SPStaticUtils
 import com.example.prepotency.app.http.observer.HttpDefaultObserver
 import com.example.prepotency.bean.result.VersionUpdatingResult
-import com.example.xavier.http.RetrofitHelper
+import com.example.xavier.app.api.ConstantTransmit.Companion.USER_AGREEMENT
+import com.example.xavier.app.api.FieldConstant.Companion.MODEL
+import com.example.xavier.app.api.FieldConstant.Companion.VERSION
+import com.example.xavier.http.client.RetrofitHelper
 import com.example.xavier.widght.popup.UserAgreementPopup
 import com.example.xavier.widght.popup.VersionUpdatingPopUp
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -34,8 +37,8 @@ object Utils {
     fun versionUpdating(context: Context) {
         val map: MutableMap<String, String> =
             HashMap()
-        map["model"] = DeviceUtils.getManufacturer()
-        map["version"] = AppUtils.getAppVersionName()
+        map[MODEL] = DeviceUtils.getManufacturer()
+        map[VERSION] = AppUtils.getAppVersionName()
         RetrofitHelper.getApiService()
             .versionUpdating(map)
             .subscribeOn(Schedulers.io())
@@ -43,7 +46,6 @@ object Utils {
             .subscribe(object : HttpDefaultObserver<VersionUpdatingResult>() {
                 override fun disposable(d: Disposable) {
                 }
-
                 override fun onSuccess(t: VersionUpdatingResult) {
                     val enforce: Int = t.getEnforce()
                     val content: String = t.getContent()
@@ -68,15 +70,16 @@ object Utils {
                         versionUpdatingPopUp.showPopupWindow()
                     }
                 }
-
                 override fun onError(errorMsg: String) {
-                    ToastUtils.showShort(errorMsg)
                 }
             })
     }
 
     // 用户协议弹窗
     fun showUserAgreement(context: Context){
+        if(SPStaticUtils.getBoolean(USER_AGREEMENT)){
+            return
+        }
         val popup = UserAgreementPopup(context)
         popup.showPopupWindow()
     }

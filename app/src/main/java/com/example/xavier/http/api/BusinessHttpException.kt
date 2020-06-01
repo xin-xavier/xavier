@@ -1,4 +1,4 @@
-package com.example.xavier.http
+package com.example.xavier.http.api
 
 import java.io.IOException
 

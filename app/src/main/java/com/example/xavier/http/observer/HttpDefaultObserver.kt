@@ -3,8 +3,8 @@ package com.example.prepotency.app.http.observer
 import android.util.Log
 import com.example.xavier.app.AppManager
 import com.example.xavier.bean.result.BaseData
-import com.example.xavier.http.BusinessHttpException
-import com.example.xavier.http.HttpfinishCallback
+import com.example.xavier.http.api.BusinessHttpException
+import com.example.xavier.http.api.HttpfinishCallback
 import com.google.gson.JsonParseException
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -33,7 +33,7 @@ abstract class HttpDefaultObserver<T> : Observer<BaseData<T>>, HttpfinishCallbac
         if (t.code==200) {
             if (t.result==null){
                 try {
-                    Log.i("genericSuperclass","onNext: "+ System.currentTimeMillis())
+                    val i = Log.i("genericSuperclass", "onNext: " + System.currentTimeMillis())
                     val tClass = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
                     t.result = tClass.newInstance()
                 }catch (e : ClassCastException){
@@ -41,7 +41,6 @@ abstract class HttpDefaultObserver<T> : Observer<BaseData<T>>, HttpfinishCallbac
                 }
             }
             t.result?.let { onSuccess(it) }
-
         }
         //code!=0代表业务出错，进行过滤
         else{

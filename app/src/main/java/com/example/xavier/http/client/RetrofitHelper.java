@@ -1,6 +1,7 @@
-package com.example.xavier.http;
+package com.example.xavier.http.client;
 
-import com.example.xavier.http.api.Server;
+import com.example.xavier.http.Server;
+import com.example.xavier.http.client.RetrofitFactory;
 
 /**
  * des 实例化Retrofit,获取ApiService

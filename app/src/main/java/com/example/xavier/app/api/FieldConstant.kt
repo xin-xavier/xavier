@@ -11,6 +11,9 @@ interface FieldConstant {
         const val ARG_PARAM_ID = "pageItem"
         const val ARG_PARAM_CLASS = "pageClass"
 
+        const val TOKEN="token"
+        const val MODEL="model"
+        const val VERSION="version"
         const val CID="cid"
         const val PID="pid"
         const val PAGE="page"

@@ -1,14 +1,21 @@
 package com.example.xavier.app.api
 
+import com.example.xavier.R
+
 /**
  * App 常量池
  */
 interface ConstantPool {
     companion object {
         const val APP_NAME = "Xavier"
-        const val Http_TAG = "OKHttpClient: "
         const val XAVIER = "Xavier"
-        const val CACHE_DIR = "cacheDir"
+
+        const val OK_TAG = "OKHttpClient: "
+        const val OK_CACHE_STALE_SEC = 60 * 60 * 24 * 2.toLong() // 设缓存有效期为两天
+        const val OK_CACHE_SIZE = 1024 * 1024 * 100 // 设缓存为100M
+        const val OK_CACHE_DIR = "cacheDir" // 缓存路径
+        const val CHCHE_CONTROL = "Cache-Control" // ok header
+        const val PRAGMA = "Pragma" // ok header
 
         const val IDENTIFIER_NAME = "status_bar_height"
         const val DEF_TYPE = "dimen"
@@ -18,6 +25,20 @@ interface ConstantPool {
         const val NEWS = "消息"
         const val SHOPPING_CART = "购物车"
         const val MINE = "我的"
+
+        val TABS: Array<String> = arrayOf(HOME, NEWS, SHOPPING_CART, MINE)
+        val ICON_SELECT_IDS: Array<Int> = arrayOf(
+            R.drawable.tab_home_select,
+            R.drawable.tab_news_select,
+            R.drawable.tab_shopping_select,
+            R.drawable.tab_mine_select
+        )
+        val ICON_UNSELECT_IDS: Array<Int> = arrayOf(
+            R.drawable.tab_home_unselect,
+            R.drawable.tab_news_unselect,
+            R.drawable.tab_shopping_unselect,
+            R.drawable.tab_mine_unselect
+        )
 
         const val SOCKET_CLIENT_TAG = "WebSocketClient"
         const val PONG = "PONG"
@@ -33,7 +54,7 @@ interface ConstantPool {
         const val DUP_HEIGHT = 285
         const val TD_DIM_AMOUNT = 0.6f
         const val SIZE_MULTIPLIER = 0.6f
-        const val DEFAULT_RADIUS=4
+        const val DEFAULT_RADIUS = 4
 
         const val NULLCHARACTER = ""
         const val SPACE = " "

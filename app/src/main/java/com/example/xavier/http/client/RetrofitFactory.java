@@ -1,5 +1,6 @@
-package com.example.xavier.http;
+package com.example.xavier.http.client;
 
+import com.example.xavier.http.url.DNSConfig;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import retrofit2.Retrofit;
@@ -23,12 +24,6 @@ class RetrofitFactory {
     static Retrofit scalarsApiServerFactory() {
         return scalarsFactory()
                 .baseUrl(DNSConfig.getInstance().getApiServerUrl())
-                .build();
-    }
-
-    static Retrofit liveApiFactory() {
-        return gsonFactory()
-                .baseUrl(DNSConfig.getInstance().getLiveApiUrl())
                 .build();
     }
 

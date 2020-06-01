@@ -8,7 +8,7 @@ import com.blankj.utilcode.util.CrashUtils
 import com.blankj.utilcode.util.SPStaticUtils
 import com.example.xavier.app.api.ConstantPool.Companion.PUSH_STATUS
 import com.example.xavier.app.notification.NotificationChannels
-import com.example.xavier.http.XavierHttpClient
+import com.example.xavier.http.client.XavierHttpClient
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader

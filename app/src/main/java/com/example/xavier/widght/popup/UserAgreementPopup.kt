@@ -9,12 +9,13 @@ import android.widget.TextView
 import com.blankj.utilcode.util.SPStaticUtils
 import com.example.xavier.R
 import com.example.xavier.app.api.ConstantTransmit
-import com.example.xavier.http.DNSConfig
 import com.example.xavier.http.url.ConstantUrl
+import com.example.xavier.http.url.DNSConfig
 import com.example.xavier.widght.LollipopFixedWebView
 import razerdp.basepopup.BasePopupWindow
 
-class UserAgreementPopup(private val context: Context) : BasePopupWindow(context),View.OnClickListener {
+class UserAgreementPopup(private val context: Context) : BasePopupWindow(context),
+    View.OnClickListener {
 
     override fun onCreateContentView(): View {
         return createPopupById(R.layout.user_agreement)
@@ -44,7 +45,7 @@ class UserAgreementPopup(private val context: Context) : BasePopupWindow(context
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.disagree ->  dismiss()
+            R.id.disagree -> dismiss()
             R.id.agree -> {
                 SPStaticUtils.put(
                     ConstantTransmit.USER_AGREEMENT,

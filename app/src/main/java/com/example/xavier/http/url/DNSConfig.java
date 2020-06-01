@@ -22,7 +22,7 @@ public class DNSConfig {
      * @method 获取域名服务器
      * boolean startsWith(String prefix)
      * 测试此字符串是否以指定的前缀开始。
-     * @param url
+     * @param url url
      * @return DNS(domain name server)
      */
     public String getDNS(String url){
@@ -31,7 +31,7 @@ public class DNSConfig {
         } else if(url.startsWith(ConstantUrl.VVV)){
             return getApiServerUrl();
         }else{
-            return getLiveApiUrl();
+            return getWs();
         }
     }
 
@@ -49,10 +49,6 @@ public class DNSConfig {
 
     public String getApiServerUrl(){
         return dnsDEBUG() ? ConstantUrl.BASE_URL_SERVER_DEBUG : ConstantUrl.BASE_URL_SERVER_RELEASE;
-    }
-
-    public String getLiveApiUrl(){
-        return dnsDEBUG() ? ConstantUrl.BASE_URL_LIVE_DEBUG : ConstantUrl.BASE_URL_LIVE_RELEASE;
     }
 
     public String getH5Url(){

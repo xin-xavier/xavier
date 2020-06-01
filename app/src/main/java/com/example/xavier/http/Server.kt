@@ -1,4 +1,4 @@
-package com.example.xavier.http.api
+package com.example.xavier.http
 
 import com.example.xavier.bean.result.BaseData
 import com.example.prepotency.bean.result.*
