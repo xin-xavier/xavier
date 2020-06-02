@@ -7,21 +7,20 @@ package com.example.xavier.app.api
 interface FieldConstant {
 
     companion object {
-        const val ARG_PARAM_VIEW = "floatingActionButton"
-        const val ARG_PARAM_ID = "pageItem"
-        const val ARG_PARAM_CLASS = "pageClass"
 
-        const val TOKEN="token"
-        const val MODEL="model"
-        const val VERSION="version"
-        const val CID="cid"
-        const val PID="pid"
-        const val PAGE="page"
-        const val NAME="name"
-        const val ID_CARD="id_card"
-        const val ID_CARD_POSITIVE="id_card_positive"
-        const val ID_CARD_REVERSE="id_card_reverse"
-        const val PHONE="phone"
+        const val TOKEN = "token"
+        const val MODEL = "model"
+        const val VERSION = "version"
+        const val CID = "cid"
+        const val PAGE_ITEM = "pageItem"
+        const val PAGE_NAME = "pageName"
+        const val PID = "pid"
+        const val PAGE = "page"
+        const val NAME = "name"
+        const val ID_CARD = "id_card"
+        const val ID_CARD_POSITIVE = "id_card_positive"
+        const val ID_CARD_REVERSE = "id_card_reverse"
+        const val PHONE = "phone"
 
     }
 

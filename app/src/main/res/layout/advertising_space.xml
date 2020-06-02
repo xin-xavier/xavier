@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingEnd="6dp"
+    android:paddingStart="6dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="173dp"
+        android:layout_height="173dp"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/imageView"
+        android:scaleType="centerCrop"
+        android:src="@drawable/null_map" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="173dp"
+        android:layout_height="84dp"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/imageView"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ad_map" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_alignStart="@+id/imageView1"
+        android:layout_alignBottom="@+id/imageView"
+        android:contentDescription="@string/imageView"
+        android:scaleType="centerCrop"
+        android:src="@drawable/null_map"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_alignEnd="@+id/imageView1"
+        android:layout_alignBottom="@+id/imageView"
+        android:contentDescription="@string/imageView"
+        android:scaleType="centerCrop"
+        android:src="@drawable/null_map" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/imageView"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ad4_map" />
+
+</RelativeLayout>

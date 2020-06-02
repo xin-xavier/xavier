@@ -12,17 +12,18 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_SELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_UNSELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.TABS
+import com.example.xavier.base.viewstratum.activity.SimpleActivty
 import com.example.xavier.base.viewstratum.activity.SimpleDecorViewActivity
 import com.example.xavier.bean.entity.TabEntity
+import com.example.xavier.main.HomeFragment
 import com.example.xavier.utils.Utils
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_actionbar_view.*
-import kotlinx.android.synthetic.main.layout_init_toobar_view.*
 import java.util.*
 
-class MainActivity : SimpleDecorViewActivity() {
+class MainActivity : SimpleActivty() {
 
     private val tabEntities = ArrayList<CustomTabEntity>()
 
@@ -45,7 +46,7 @@ class MainActivity : SimpleDecorViewActivity() {
         settingUpTheNavigator()
     }
 
-    override fun onPrepare() {
+    /*override fun onPrepare() {
         if (isDefaultBar()) {
             val returnPager =
                 toolbarManagerFragment.rootView.findViewById<ImageView>(R.id.returnPager)
@@ -58,18 +59,18 @@ class MainActivity : SimpleDecorViewActivity() {
         }
     }
 
-    override fun layoutToolbarResID(): Int {
+    override fun toolbarLayoutRes(): Int {
         return when (pageItem) {
             0 -> {
-                appbarBg.setImageResource(R.color.initial)
-                R.layout.layout_searchbox_btn
+                //appbarBg.setImageResource(R.mipmap.sona_buvelle)
+                R.layout.layout_no_space_view
             }
             else -> {
                 appbarBg.setImageResource(R.color.white)
                 R.layout.layout_init_toobar_view
             }
         }
-    }
+    }*/
 
     private fun initData() {
         for (tab in TABS) {
@@ -87,7 +88,7 @@ class MainActivity : SimpleDecorViewActivity() {
     private fun settingUpTheNavigator() {
         val pagerAdapter = TabsPagerAdapter2(this)
         carousel.adapter = pagerAdapter
-        //carousel.isUserInputEnabled = false
+        carousel.isUserInputEnabled = false
         navigator.setTabData(tabEntities)
 
         navigator.setOnTabSelectListener(object : OnTabSelectListener {
@@ -95,6 +96,7 @@ class MainActivity : SimpleDecorViewActivity() {
             override fun onTabSelect(position: Int) {
                 carousel.currentItem = position
             }
+
             // 选项卡选中时运行
             override fun onTabReselect(position: Int) {}
         })
@@ -107,7 +109,7 @@ class MainActivity : SimpleDecorViewActivity() {
                 }
                 pageItem = position
                 navigator.currentTab = position
-                setToolbarResID(layoutToolbarResID())
+                //setToolbar(toolbarLayoutRes())
             }
         })
     }
@@ -138,19 +140,19 @@ class MainActivity : SimpleDecorViewActivity() {
         override fun createFragment(position: Int): Fragment =
             when (position) {
                 0 -> {
-                    BlankFragment.newInstance("","")
+                    HomeFragment.newInstance(TABS[position])
                 }
                 1 -> {
-                    BlankFragment.newInstance("","")
+                    BlankFragment.newInstance("", "")
                 }
                 2 -> {
-                    BlankFragment.newInstance("","")
+                    BlankFragment.newInstance("", "")
                 }
                 3 -> {
-                    BlankFragment.newInstance("","")
+                    BlankFragment.newInstance("", "")
                 }
                 else -> {
-                    BlankFragment.newInstance("","")
+                    BlankFragment.newInstance("", "")
                 }
             }
     }

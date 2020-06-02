@@ -18,5 +18,14 @@
         <item name="android:windowBackground">@drawable/splash_welcome</item>
     </style>
 
+    <!--Skin-->
+    <style name="SkinCompatTextAppearance.titleSelectColor" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/skin_title_select</item>
+    </style>
+
+    <style name="SkinCompatTextAppearance_titleUnSelectColor" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/skin_title_unselect</item>
+    </style>
+
 
 </resources>

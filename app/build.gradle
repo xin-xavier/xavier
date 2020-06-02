@@ -183,6 +183,13 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
 
     /**
+     * statusbar 沉浸状态栏
+     * github:
+     *  https://jaeger.itscoder.com/android/2016/03/27/statusbar-util.html
+     */
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    /**
      *   BaseRecyclerViewAdapterHelper BRVAH 简化recyclerViewAdapter
      *   github:
      *    https://github.com/CymChad/BaseRecyclerViewAdapterHelper

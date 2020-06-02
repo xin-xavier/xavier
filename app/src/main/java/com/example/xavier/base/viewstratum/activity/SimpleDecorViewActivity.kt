@@ -12,13 +12,13 @@ import com.example.xavier.R
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 import com.example.xavier.utils.helper.ToolbarHelper
 import kotlinx.android.synthetic.main.layout_actionbar_view.*
+import kotlinx.android.synthetic.main.layout_init_toobar_view.*
 
 
 abstract class SimpleDecorViewActivity : SimpleActivty(), OnPrepareListener {
 
     protected lateinit var inflater: LayoutInflater
     protected lateinit var parentLinearLayout: LinearLayout
-    protected lateinit var beginTransaction: FragmentTransaction
     protected lateinit var toolbarManagerFragment: ToolbarHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,16 +39,16 @@ abstract class SimpleDecorViewActivity : SimpleActivty(), OnPrepareListener {
     /**
      * @param layoutResID layout id of sub-activity
      */
-    private fun initContentView(@LayoutRes layoutResID: Int) {
-        val viewGroup = findViewById(android.R.id.content) as ViewGroup
+    private fun initContentView(@LayoutRes initLayoutResID: Int) {
+        val viewGroup = findViewById<ViewGroup>(android.R.id.content)
         viewGroup.removeAllViews()
-        parentLinearLayout = LinearLayout(this)
+        parentLinearLayout = LinearLayout(context)
         parentLinearLayout.orientation = LinearLayout.VERTICAL
         //  add parentLinearLayout in viewGroup
         viewGroup.addView(parentLinearLayout)
         //  add the layout of BaseDecorContentActivity in parentLinearLayout
-        inflater = LayoutInflater.from(this)
-        inflater.inflate(layoutResID, parentLinearLayout, true)
+        inflater = LayoutInflater.from(context)
+        inflater.inflate(initLayoutResID, parentLinearLayout, true)
 
         // toolbarLayoutContent 一般为 40dp
         // 通过LayoutParams获取 这是获取的就是在 xml 里明确定义的高度
@@ -60,14 +60,14 @@ abstract class SimpleDecorViewActivity : SimpleActivty(), OnPrepareListener {
         val appbarHeight: Int = BarUtils.getStatusBarHeight() + height
         appbarLayout.layoutParams.height = appbarHeight
 
-        setToolbarResID(layoutToolbarResID())
+        setToolbar(toolbarLayoutRes())
     }
 
-    open fun setToolbarResID(@LayoutRes layoutToolbarID: Int) {
-        beginTransaction = supportFragmentManager.beginTransaction()
+    open fun setToolbar(@LayoutRes toolbarLayoutResID: Int) {
+        val beginTransaction : FragmentTransaction= supportFragmentManager.beginTransaction()
         toolbarManagerFragment =
             ToolbarHelper(
-                layoutToolbarID,
+                toolbarLayoutResID,
                 this
             )
         beginTransaction.replace(R.id.toolbarLayoutContent, toolbarManagerFragment)
@@ -78,24 +78,23 @@ abstract class SimpleDecorViewActivity : SimpleActivty(), OnPrepareListener {
         return R.layout.layout_decor_view
     }
 
-    open fun layoutToolbarResID(): Int {
+    open fun toolbarLayoutRes(): Int {
         return R.layout.layout_init_toobar_view
     }
 
     // 判断使用的是否是默认的 toolbarRes
     open fun isDefaultBar(): Boolean {
-        return layoutToolbarResID() == R.layout.layout_init_toobar_view
+        return toolbarLayoutRes() == R.layout.layout_init_toobar_view
     }
 
     // 当页面使用的是否是默认的 toolbarRes 时，方便设置 title
     open fun setDefaultTitle(title: String) {
         if (isDefaultBar()) {
-            val toolbarTitle =
-                toolbarManagerFragment.rootView.findViewById<TextView>(R.id.toolbarTitle)
-            toolbarTitle.text = title
+            toolbarManagerFragment.rootView?.let {
+                toolbarManagerFragment.rootView?.findViewById<TextView>(R.id.toolbarTitle)
+                toolbarTitle.text = title
+            }
         }
     }
-
-
 
 }

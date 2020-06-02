@@ -19,7 +19,7 @@ interface Server {
 
     //头部分类
     @POST("v3/home/topClass")
-    fun topClass(): Observable<BaseData<MutableList<TopClassResult>>>
+    fun topClass(): Observable<BaseData<List<TopClassResult>>>
 
     //首页轮播图
     @POST("v3/home/slideShow")
