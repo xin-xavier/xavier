@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.example.xavier.R
 import com.example.xavier.app.api.ConstantPool
@@ -13,6 +14,8 @@ import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 
 
 class ToolbarHelper : SimpleFragment, View.OnClickListener {
+
+    var rootHeight : Int=0
 
     private lateinit var onPrepareListener: OnPrepareListener
 
@@ -30,6 +33,9 @@ class ToolbarHelper : SimpleFragment, View.OnClickListener {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
+        rootView.let {
+            rootHeight = rootView?.layoutParams?.height!!
+        }
         if (contentLayoutId != 0) {
             when (contentLayoutId) {
                 R.layout.layout_init_toobar_view -> {

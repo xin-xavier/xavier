@@ -27,5 +27,8 @@
         <item name="android:textColor">@color/skin_title_unselect</item>
     </style>
 
+    <style name="tabLayoutTextSize">
+        <item name="android:textSize">15sp</item>
+    </style>
 
 </resources>

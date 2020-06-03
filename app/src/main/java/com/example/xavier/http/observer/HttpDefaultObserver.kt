@@ -33,7 +33,6 @@ abstract class HttpDefaultObserver<T> : Observer<BaseData<T>>, HttpfinishCallbac
         if (t.code==200) {
             if (t.result==null){
                 try {
-                    val i = Log.i("genericSuperclass", "onNext: " + System.currentTimeMillis())
                     val tClass = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
                     t.result = tClass.newInstance()
                 }catch (e : ClassCastException){

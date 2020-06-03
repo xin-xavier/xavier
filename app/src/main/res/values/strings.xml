@@ -21,6 +21,13 @@
     <string name="upgradeImmediately">立即升级</string>
     <string name="yang">￥</string>
     <string name="_1000f">1000.00</string>
+
     <string name="hello_blank_fragment">hello_blank_fragment</string>
+
+    <string name="store">店铺</string>
+    <string name="customerService">客服</string>
+    <string name="shoppingTrolley">购物车</string>
+    <string name="joinShoppingTrolley">加入购物车</string>
+    <string name="buyNow">立即购买</string>
 
 </resources>

@@ -46,32 +46,6 @@ class MainActivity : SimpleActivty() {
         settingUpTheNavigator()
     }
 
-    /*override fun onPrepare() {
-        if (isDefaultBar()) {
-            val returnPager =
-                toolbarManagerFragment.rootView.findViewById<ImageView>(R.id.returnPager)
-            val toolbarTitle =
-                toolbarManagerFragment.rootView.findViewById<TextView>(R.id.toolbarTitle)
-            toolbarTitle.text = TABS[pageItem]
-            returnPager.setOnClickListener {
-                onBackPressed()
-            }
-        }
-    }
-
-    override fun toolbarLayoutRes(): Int {
-        return when (pageItem) {
-            0 -> {
-                //appbarBg.setImageResource(R.mipmap.sona_buvelle)
-                R.layout.layout_no_space_view
-            }
-            else -> {
-                appbarBg.setImageResource(R.color.white)
-                R.layout.layout_init_toobar_view
-            }
-        }
-    }*/
-
     private fun initData() {
         for (tab in TABS) {
             val indexOf = TABS.indexOf(tab)
@@ -109,7 +83,6 @@ class MainActivity : SimpleActivty() {
                 }
                 pageItem = position
                 navigator.currentTab = position
-                //setToolbar(toolbarLayoutRes())
             }
         })
     }
@@ -143,16 +116,16 @@ class MainActivity : SimpleActivty() {
                     HomeFragment.newInstance(TABS[position])
                 }
                 1 -> {
-                    BlankFragment.newInstance("", "")
+                    BlankFragment.newInstance(TABS[position], "")
                 }
                 2 -> {
-                    BlankFragment.newInstance("", "")
+                    BlankFragment.newInstance(TABS[position], "")
                 }
                 3 -> {
-                    BlankFragment.newInstance("", "")
+                    BlankFragment.newInstance(TABS[position], "")
                 }
                 else -> {
-                    BlankFragment.newInstance("", "")
+                    BlankFragment.newInstance(TABS[position], "")
                 }
             }
     }

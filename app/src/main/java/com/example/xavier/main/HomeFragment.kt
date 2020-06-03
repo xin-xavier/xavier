@@ -19,6 +19,7 @@ import com.example.xavier.main.home.HomePresenter
 import com.example.xavier.main.home.container.HomeContainerFragment
 import com.example.xavier.main.home.container.TabFragment
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.layout_home_searchbox_btn.*
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
@@ -35,15 +36,21 @@ class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract
         pageName = arguments?.getString(PAGE_NAME)
     }
 
-    override fun onPrepare() {
-    }
-
     override fun init() {
         presenter.let { presenter?.topClass() }
     }
 
+    override fun toolbarLayoutRes(): Int {
+        return R.layout.layout_home_searchbox_btn
+    }
+
     override fun contentLayoutRes(): Int {
         return R.layout.fragment_home
+    }
+
+    override fun onPrepare() {
+        super.onPrepare()
+        rootView?.findViewById<ImageView>(R.id.appbarBg)?.setImageResource(R.color.initial)
     }
 
     override fun showTopClass(list: List<TopClassResult>) {
@@ -99,8 +106,8 @@ class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract
                             leavePercent: Float,
                             leftToRight: Boolean
                         ) {
-                            title.setScaleX(1.4f + (1.1f - 1.4f) * leavePercent)
-                            title.setScaleY(1.4f + (1.1f - 1.4f) * leavePercent)
+                            title.scaleX = 1.4f + (1.1f - 1.4f) * leavePercent
+                            title.scaleY = 1.4f + (1.1f - 1.4f) * leavePercent
                         }
 
                         override fun onEnter(
@@ -109,8 +116,8 @@ class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract
                             enterPercent: Float,
                             leftToRight: Boolean
                         ) {
-                            title.setScaleX(1.1f + (1.4f - 1.1f) * enterPercent)
-                            title.setScaleY(1.1f + (1.4f - 1.1f) * enterPercent)
+                            title.scaleX = 1.1f + (1.4f - 1.1f) * enterPercent
+                            title.scaleY = 1.1f + (1.4f - 1.1f) * enterPercent
                         }
                     }
 
@@ -130,7 +137,7 @@ class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract
             }
 
         }
-        magicIndicator.setNavigator(commonNavigator)
+        magicIndicator.navigator = commonNavigator
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrollStateChanged(state: Int) {
                 magicIndicator.onPageScrollStateChanged(state)

@@ -67,6 +67,11 @@ interface ConstantPool {
         const val C_2 = "2"
         const val C_3 = "3"
 
+        const val COMMODITY = "商品"
+        const val WORD_OF_MOUTH = "口碑"
+        const val DETAIL = "详情"
+        const val RECOMMEND = "推荐"
+
         const val NOTIFICATION_SAMPLE = 0
         const val NOTIFICATION_ACTION = 1
         const val NOTIFICATION_REMOTE_INPUT = 2

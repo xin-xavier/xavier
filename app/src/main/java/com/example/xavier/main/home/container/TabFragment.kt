@@ -10,8 +10,10 @@ import com.blankj.utilcode.util.SizeUtils
 import com.blankj.utilcode.util.SpanUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.prepotency.bean.result.*
+import com.example.xavier.commodity.CommodityDetailsActivity
 import com.example.xavier.R
 import com.example.xavier.adapter.page.BannerImageAdapter
 import com.example.xavier.app.api.ConstantPool.Companion.YANG
@@ -43,6 +45,11 @@ class TabFragment : HomeContainerFragment() {
             SizeUtils.sp2px(12.toFloat())
         recyclerView.addItemDecoration(RecyclerViewSpacesItemDecoration(stringIntegerHashMap))
         recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : OnItemClickListener{
+            override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+                intent(CommodityDetailsActivity::class.java)
+            }
+        })
         // 移除全部头部
         adapter.removeAllHeaderView()
         if (pageItem == 0) {
@@ -83,6 +90,7 @@ class TabFragment : HomeContainerFragment() {
         rowsList.clear()
         rowsList.addAll(rows)
         adapter.notifyDataSetChanged()
+
     }
 
     override fun showError(error: String) {

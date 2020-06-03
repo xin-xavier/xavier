@@ -26,4 +26,8 @@
     <color name="skin_title_unselect">#ff666666</color>
     <color name="skin_indicator">#ffd0a147</color>
 
+    <color name="skyblue">#87ceeb</color> <!-- 天蓝色 -->
+    <color name="springgreen">#00ff7f</color> <!-- 春绿色 -->
+    <color name="lightcyan">#e0ffff</color> <!-- 亮青色 -->
+
 </resources>

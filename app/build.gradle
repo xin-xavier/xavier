@@ -34,13 +34,14 @@ android {
     // signingConfigs 需要写在 buildTypes 前面，不然编译的时候会报错
     signingConfigs {
         debug {//调试版本的签名配置
-            storeFile file('G:/Androider/xavier/xavier/xavier-debug-app.jks')
+            // ../ 表示上级目录
+            storeFile file('../xavier-debug-app.jks')
             keyPassword 'xavier'
             keyAlias 'xin'
             storePassword 'xavier'
         }
         release {
-            storeFile file('G:/Androider/xavier/xavier/xavier-release-app.jks')
+            storeFile file('../xavier-release-app.jks')
             keyPassword 'xavier'
             keyAlias 'xin'
             storePassword 'xavier'
