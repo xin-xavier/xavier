@@ -55,6 +55,8 @@ interface ConstantPool {
         const val TD_DIM_AMOUNT = 0.6f
         const val SIZE_MULTIPLIER = 0.6f
         const val DEFAULT_RADIUS = 4
+        const val EDGE_DISTANCE = 12f
+        const val DIVIDE_DISTANCE = 6f
 
         const val NULLCHARACTER = ""
         const val SPACE = " "

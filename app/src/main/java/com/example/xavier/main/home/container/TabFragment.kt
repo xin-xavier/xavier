@@ -1,10 +1,13 @@
 package com.example.xavier.main.home.container
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.blankj.utilcode.util.SizeUtils
 import com.blankj.utilcode.util.SpanUtils
@@ -13,21 +16,25 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.prepotency.bean.result.*
-import com.example.xavier.commodity.CommodityDetailsActivity
 import com.example.xavier.R
 import com.example.xavier.adapter.page.BannerImageAdapter
 import com.example.xavier.app.api.ConstantPool.Companion.YANG
 import com.example.xavier.app.api.Enumerations.Companion.peoplePay
+import com.example.xavier.commodity.CommodityDetailsActivity
 import com.example.xavier.utils.GlideEngineLoging
-import com.example.xavier.utils.RecyclerViewSpacesItemDecoration
+import com.example.xavier.utils.HorizontalItemDecoration
+import com.example.xavier.utils.XavierItemDecoration
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerAdapter
 import kotlinx.android.synthetic.main.fragment_tab.*
 
+
 class TabFragment : HomeContainerFragment() {
 
     private val rowsList = ArrayList<HotResult.RowsBean>()
-    private val adapter = ProductListAdapter(R.layout.commodity_itme, rowsList)
+
+    // private val adapter = ProductListAdapter(R.layout.commodity_itme, rowsList)
+    private val adapter = ProductListAdapter(R.layout.tiem3, rowsList)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +47,20 @@ class TabFragment : HomeContainerFragment() {
     override fun init() {
         recyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        val stringIntegerHashMap: HashMap<String, Int?> = HashMap()
-        stringIntegerHashMap[RecyclerViewSpacesItemDecoration.TOP_DECORATION] =
-            SizeUtils.sp2px(12.toFloat())
-        recyclerView.addItemDecoration(RecyclerViewSpacesItemDecoration(stringIntegerHashMap))
+        /*  val stringIntegerHashMap: HashMap<String, Int?> = HashMap()
+          stringIntegerHashMap[RecyclerViewSpacesItemDecoration.TOP_DECORATION] =
+              SizeUtils.dp2px(12.toFloat())
+          stringIntegerHashMap[RecyclerViewSpacesItemDecoration.LEFT_DECORATION] =
+              SizeUtils.dp2px(6.toFloat())
+          recyclerView.addItemDecoration(RecyclerViewSpacesItemDecoration(stringIntegerHashMap))*/
+        /* val spanCount =100 // 3 columns
+         val spacing = 12 // 50px
+         val includeEdge = true
+         recyclerView.addItemDecoration(GridSpacingItemDecoration(spanCount, SizeUtils.dp2px(6f), includeEdge))*/
+       // recyclerView.addItemDecoration(HorizontalItemDecoration(12, context)) //10表示10dp
+        recyclerView.addItemDecoration(XavierItemDecoration(true)) //10表示10dp
         recyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : OnItemClickListener{
+        adapter.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
                 intent(CommodityDetailsActivity::class.java)
             }
@@ -167,9 +182,22 @@ class TabFragment : HomeContainerFragment() {
 
     inner class ProductListAdapter(layoutResId: Int, data: MutableList<HotResult.RowsBean>?) :
         BaseQuickAdapter<HotResult.RowsBean, BaseViewHolder>(layoutResId, data) {
+
         override fun convert(holder: BaseViewHolder, item: HotResult.RowsBean) {
+           /* val position = holder.layoutPosition
+            Log.i(TAG, "convert: " + "position = " + position + " --- " + item.name)
+            if (position > 0) {
+                val oddEven = position%2
+                val dp2px12: Int = SizeUtils.dp2px(12f);
+                val dp2px6: Int = SizeUtils.dp2px(6f);
+                if(oddEven==1){
+                    holder.getView<LinearLayout>(R.id.layout).setPadding(dp2px12,dp2px12,dp2px6,0)
+                }else{
+                    holder.getView<LinearLayout>(R.id.layout).setPadding(dp2px6,dp2px12,dp2px12,0)
+                }
+            }*/
             GlideEngineLoging.createGlideEngine()
-                .loadDefaultMapImage(context, item.image, holder.getView(R.id.commodity))
+                .loadDefaultMapImage(context, item.image, holder.getView(R.id.image))
             SpanUtils.with(holder.getView(R.id.price)).append(YANG).setFontSize(10, true)
                 .append(item.price).setFontSize(17, true).create()
             holder.setText(R.id.name, item.name)

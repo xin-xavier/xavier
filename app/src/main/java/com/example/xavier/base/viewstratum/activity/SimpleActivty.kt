@@ -9,6 +9,7 @@ import com.example.xavier.app.AppManager
 import com.example.xavier.base.viewstratum.presentation.UIPresentation
 import com.example.xavier.login.LoginActivity
 import com.gyf.immersionbar.ImmersionBar
+import com.jaeger.library.StatusBarUtil
 
 abstract class SimpleActivty() : LifeLinksBaseActivity(),
     UIPresentation {
@@ -33,11 +34,15 @@ abstract class SimpleActivty() : LifeLinksBaseActivity(),
         ImmersionBar.with(activity)
             .transparentStatusBar() //透明状态栏，不写默认透明色
             .statusBarDarkFont(true) //状态栏字体是深色，不写默认为亮色
-            .navigationBarColor(R.color.white) //透明状态栏和导航栏，不写默认状态栏为透明色，导航栏为黑色（设置此方法，fullScreen()方法自动为true）
+            .navigationBarColor(R.color.white) //导航栏颜色
             .navigationBarDarkIcon(true) //导航栏图标是深色，不写默认为亮色
             .init() //通过上面配置后初始化后方可成功调用
     }
 
+    // 状态栏
+    protected open fun statusbar() {
+        StatusBarUtil.setTranslucentForImageView(this, 0, null)
+    }
 
     /**
      * @method 页面跳转

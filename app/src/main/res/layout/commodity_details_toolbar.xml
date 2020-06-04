@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/toolbarLayout"
+    android:alpha="0"
     android:layout_width="match_parent"
-    android:layout_height="40dp">
+    android:layout_height="375dp"
+    android:background="@color/transparent">
+
+    <com.youth.banner.Banner
+        android:layout_width="match_parent"
+        android:layout_height="375dp" />
 
     <ImageView
         android:id="@id/returnPager"
@@ -43,9 +48,9 @@
         android:layout_toEndOf="@+id/returnPager"
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
+        app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@color/mainOrange"
         app:tabTextAppearance="@style/tabLayoutTextSize"
-        app:tabTextColor="@color/colorAccent"
-        tools:background="@color/skyblue" />
+        app:tabTextColor="@color/colorAccent" />
 
 </RelativeLayout>

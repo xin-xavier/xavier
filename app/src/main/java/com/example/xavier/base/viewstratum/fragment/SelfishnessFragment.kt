@@ -36,7 +36,7 @@ abstract class SelfishnessFragment : SimpleFragment(), OnPrepareListener {
         rootView.let {
             rootView?.findViewById<FrameLayout>(R.id.toolbarLayoutContent)?.layoutParams?.height=toolbarHelper.rootHeight
             val appbarHeight: Int = BarUtils.getStatusBarHeight() + toolbarHelper.rootHeight
-            LogUtils.i(TAG+": appbarHeight = "+appbarHeight)
+            //LogUtils.i(TAG+": appbarHeight = "+appbarHeight)
             view?.findViewById<FrameLayout>(R.id.appbarLayout)?.layoutParams?.height = appbarHeight
         }
     }
