@@ -1,6 +1,7 @@
 package com.example.xavier
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,16 +10,24 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.blankj.utilcode.util.AppUtils
+import com.blankj.utilcode.util.DeviceUtils
+import com.example.prepotency.app.http.observer.HttpDefaultObserver
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_SELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_UNSELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.TABS
+import com.example.xavier.app.api.FieldConstant
 import com.example.xavier.base.viewstratum.activity.SimpleActivty
 import com.example.xavier.base.viewstratum.activity.SimpleDecorViewActivity
 import com.example.xavier.bean.entity.TabEntity
+import com.example.xavier.http.client.RetrofitHelper
 import com.example.xavier.main.HomeFragment
 import com.example.xavier.utils.Utils
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_actionbar_view.*
 import java.util.*

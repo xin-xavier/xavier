@@ -12,6 +12,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.prepotency.bean.result.TopClassResult
 import com.example.xavier.R
+import com.example.xavier.app.api.ConstantPool.Companion.BIG_SCALE
+import com.example.xavier.app.api.ConstantPool.Companion.LITTLE_SCALE
 import com.example.xavier.app.api.FieldConstant.Companion.PAGE_NAME
 import com.example.xavier.base.viewstratum.fragment.BaseSelfishnessFragment
 import com.example.xavier.main.home.HomeContract
@@ -106,8 +108,8 @@ class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract
                             leavePercent: Float,
                             leftToRight: Boolean
                         ) {
-                            title.scaleX = 1.4f + (1.1f - 1.4f) * leavePercent
-                            title.scaleY = 1.4f + (1.1f - 1.4f) * leavePercent
+                            title.scaleX = BIG_SCALE + (LITTLE_SCALE - BIG_SCALE) * leavePercent
+                            title.scaleY = BIG_SCALE + (LITTLE_SCALE - BIG_SCALE) * leavePercent
                         }
 
                         override fun onEnter(
@@ -116,8 +118,8 @@ class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract
                             enterPercent: Float,
                             leftToRight: Boolean
                         ) {
-                            title.scaleX = 1.1f + (1.4f - 1.1f) * enterPercent
-                            title.scaleY = 1.1f + (1.4f - 1.1f) * enterPercent
+                            title.scaleX = LITTLE_SCALE + (BIG_SCALE - LITTLE_SCALE) * enterPercent
+                            title.scaleY = LITTLE_SCALE + (BIG_SCALE - LITTLE_SCALE) * enterPercent
                         }
                     }
 

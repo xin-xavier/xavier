@@ -8,25 +8,25 @@
 
     <!-- 头部 -->
     <item
-        android:bottom="@dimen/dp_151"
+        android:bottom="151dp"
         android:gravity="fill">
         <bitmap android:src="@drawable/splash_top" />
     </item>
 
     <!-- center -->
     <item
-        android:bottom="@dimen/dp_211"
+        android:bottom="211dp"
         android:gravity="fill"
-        android:top="@dimen/dp_81">
+        android:top="81dp">
         <bitmap android:src="@drawable/splash_center" />
     </item>
 
     <!-- 底部 -->
     <item
-        android:bottom="@dimen/dp_41"
+        android:bottom="41dp"
         android:gravity="center|bottom"
-        android:left="@dimen/dp_125"
-        android:right="@dimen/dp_125">
+        android:left="125dp"
+        android:right="125dp">
         <bitmap android:src="@drawable/splash_bottom" />
     </item>
 

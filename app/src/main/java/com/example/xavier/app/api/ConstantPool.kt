@@ -17,10 +17,6 @@ interface ConstantPool {
         const val CHCHE_CONTROL = "Cache-Control" // ok header
         const val PRAGMA = "Pragma" // ok header
 
-        const val IDENTIFIER_NAME = "status_bar_height"
-        const val DEF_TYPE = "dimen"
-        const val ANDROID = "android"
-
         const val HOME = "首页"
         const val NEWS = "消息"
         const val SHOPPING_CART = "购物车"
@@ -50,13 +46,12 @@ interface ConstantPool {
         const val GRAY_SERVICE_ID = 9501
         const val SETTING_FOR_RESULTCODE = 100
 
-        const val DUP_WIDTH = 300
-        const val DUP_HEIGHT = 285
-        const val TD_DIM_AMOUNT = 0.6f
         const val SIZE_MULTIPLIER = 0.6f
         const val DEFAULT_RADIUS = 4
         const val EDGE_DISTANCE = 12f
         const val DIVIDE_DISTANCE = 6f
+        const val LITTLE_SCALE = 1.1f
+        const val BIG_SCALE = 1.4f
 
         const val NULLCHARACTER = ""
         const val SPACE = " "

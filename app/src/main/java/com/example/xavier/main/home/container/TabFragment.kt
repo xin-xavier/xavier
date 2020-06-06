@@ -1,19 +1,14 @@
 package com.example.xavier.main.home.container
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.blankj.utilcode.util.SizeUtils
 import com.blankj.utilcode.util.SpanUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.prepotency.bean.result.*
 import com.example.xavier.R
@@ -22,7 +17,6 @@ import com.example.xavier.app.api.ConstantPool.Companion.YANG
 import com.example.xavier.app.api.Enumerations.Companion.peoplePay
 import com.example.xavier.commodity.CommodityDetailsActivity
 import com.example.xavier.utils.GlideEngineLoging
-import com.example.xavier.utils.HorizontalItemDecoration
 import com.example.xavier.utils.XavierItemDecoration
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerAdapter
@@ -32,9 +26,7 @@ import kotlinx.android.synthetic.main.fragment_tab.*
 class TabFragment : HomeContainerFragment() {
 
     private val rowsList = ArrayList<HotResult.RowsBean>()
-
-    // private val adapter = ProductListAdapter(R.layout.commodity_itme, rowsList)
-    private val adapter = ProductListAdapter(R.layout.tiem3, rowsList)
+    private val adapter = ProductListAdapter(R.layout.commodity_itme, rowsList)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,24 +39,9 @@ class TabFragment : HomeContainerFragment() {
     override fun init() {
         recyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        /*  val stringIntegerHashMap: HashMap<String, Int?> = HashMap()
-          stringIntegerHashMap[RecyclerViewSpacesItemDecoration.TOP_DECORATION] =
-              SizeUtils.dp2px(12.toFloat())
-          stringIntegerHashMap[RecyclerViewSpacesItemDecoration.LEFT_DECORATION] =
-              SizeUtils.dp2px(6.toFloat())
-          recyclerView.addItemDecoration(RecyclerViewSpacesItemDecoration(stringIntegerHashMap))*/
-        /* val spanCount =100 // 3 columns
-         val spacing = 12 // 50px
-         val includeEdge = true
-         recyclerView.addItemDecoration(GridSpacingItemDecoration(spanCount, SizeUtils.dp2px(6f), includeEdge))*/
-       // recyclerView.addItemDecoration(HorizontalItemDecoration(12, context)) //10表示10dp
-        recyclerView.addItemDecoration(XavierItemDecoration(true)) //10表示10dp
+        recyclerView.addItemDecoration(XavierItemDecoration(1))
         recyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : OnItemClickListener {
-            override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
-                intent(CommodityDetailsActivity::class.java)
-            }
-        })
+        adapter.setOnItemClickListener { _, _, _ -> intent(CommodityDetailsActivity::class.java) }
         // 移除全部头部
         adapter.removeAllHeaderView()
         if (pageItem == 0) {
@@ -184,7 +161,7 @@ class TabFragment : HomeContainerFragment() {
         BaseQuickAdapter<HotResult.RowsBean, BaseViewHolder>(layoutResId, data) {
 
         override fun convert(holder: BaseViewHolder, item: HotResult.RowsBean) {
-           /* val position = holder.layoutPosition
+            /*val position = holder.layoutPosition
             Log.i(TAG, "convert: " + "position = " + position + " --- " + item.name)
             if (position > 0) {
                 val oddEven = position%2

@@ -1,7 +1,6 @@
 package com.example.xavier.utils;
 
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -19,12 +18,14 @@ public class XavierItemDecoration extends RecyclerView.ItemDecoration {
 
     private int shortDivide = SizeUtils.dp2px(DIVIDE_DISTANCE);
     private int longDivide = SizeUtils.dp2px(EDGE_DISTANCE);
-    private boolean existHeader;
+    // existHeader == 0 == 无 Header
+    // existHeader == 1 == 有 Header
+    private int existHeader;
 
     public XavierItemDecoration() {
     }
 
-    public XavierItemDecoration(boolean existHeader) {
+    public XavierItemDecoration(int existHeader) {
         this.existHeader = existHeader;
     }
 
@@ -33,20 +34,21 @@ public class XavierItemDecoration extends RecyclerView.ItemDecoration {
         //super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildAdapterPosition(view);
         int totalCount = parent.getAdapter().getItemCount();
-        Log.i("XavierItemDecoration", "getItemOffsets: "+"position = "+position +" --- totalCount = "+totalCount);
+        // Log.i("XavierItemDecoration", "getItemOffsets: " + "position = " + position + " --- totalCount = " + totalCount);
         // 无 Header position == 0 == 第一个
         // 有 Header position == 1 == 第一个
-        if (existHeader) {
-            if (position >= 1) {
+        // position == totalCount - 1 == 最后一个
+        if (existHeader == 0) {
+            if (position >= 0) {
                 int oddEven = position % 2;
-                if (position != totalCount-1) {
+                if (position != totalCount - 1) {
                     usualDivide(outRect, oddEven);
                 } else {
                     lastDivide(outRect, oddEven);
                 }
             }
         } else {
-            if (position >= 0) {
+            if (position >= 1) {
                 int oddEven = position % 2;
                 if (position != totalCount - 1) {
                     usualDivide(outRect, oddEven);
@@ -58,27 +60,25 @@ public class XavierItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private void usualDivide(@NonNull Rect outRect, int oddEven) {
-        if (oddEven == 1) {
-            outRect.left = longDivide;
-            outRect.right = shortDivide;
-        } else {
-            outRect.left = shortDivide;
-            outRect.right = longDivide;
-        }
+        divide(outRect,oddEven);
         outRect.top = longDivide;
         outRect.bottom = 0;
     }
 
     private void lastDivide(@NonNull Rect outRect, int oddEven) {
-        if (oddEven == 1) {
+        divide(outRect,oddEven);
+        outRect.top = longDivide;
+        outRect.bottom = longDivide;
+    }
+
+    private void divide(@NonNull Rect outRect, int oddEven) {
+        if (oddEven == existHeader) {
             outRect.left = longDivide;
             outRect.right = shortDivide;
         } else {
             outRect.left = shortDivide;
             outRect.right = longDivide;
         }
-        outRect.top = longDivide;
-        outRect.bottom = longDivide;
     }
 
 }

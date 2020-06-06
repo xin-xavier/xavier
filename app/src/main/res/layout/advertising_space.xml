@@ -2,10 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingEnd="6dp"
-    android:paddingStart="6dp"
-    android:layout_marginTop="12dp"
-    android:layout_marginBottom="12dp">
+    android:paddingStart="12dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="12dp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,7 +32,7 @@
         android:layout_alignBottom="@+id/imageView"
         android:contentDescription="@string/imageView"
         android:scaleType="centerCrop"
-        android:src="@drawable/null_map"/>
+        android:src="@drawable/null_map" />
 
     <ImageView
         android:id="@+id/imageView3"
