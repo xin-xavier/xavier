@@ -20,6 +20,9 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+####################################################################################################
+# Glide
+####################################################################################################
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
 -keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
@@ -31,3 +34,34 @@
 ##如果你使用 DexGuard 你可能还需要添加：
 ## for DexGuard only
 ## -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+####################################################################################################
+# Glide
+####################################################################################################
+
+####################################################################################################
+# Bugly
+####################################################################################################
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+####################################################################################################
+# Bugly
+####################################################################################################
+
+####################################################################################################
+# EventBus
+# https://github.com/greenrobot/EventBus
+####################################################################################################
+-keepattributes *Annotation*
+-keepclassmembers class * {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+
+# And if you use AsyncExecutor:
+-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
+    <init>(java.lang.Throwable);
+}
+####################################################################################################
+# EventBus
+####################################################################################################
+

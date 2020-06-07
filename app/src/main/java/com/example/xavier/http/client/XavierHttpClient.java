@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.blankj.utilcode.util.NetworkUtils;
 import com.example.xavier.BuildConfig;
+import com.example.xavier.utils.XavierLogUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -101,7 +102,8 @@ public class XavierHttpClient {
                     new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                         @Override  //日志过滤器
                         public void log(@NotNull String message) {
-                            Log.i(OK_TAG, message);
+                            //Log.i(OK_TAG, message);
+                            XavierLogUtils.INSTANCE.longInfo(OK_TAG,message);
                         }
                     });
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -10,7 +10,7 @@ interface HomeContract{
         fun showTopClass(list:List<TopClassResult>)
     }
 
-    interface Presenter<T>: IBasePresenter<View> {
+    interface Presenter<V>: IBasePresenter<View> {
         fun topClass()
     }
 }

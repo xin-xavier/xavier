@@ -1,13 +1,11 @@
-package com.example.xavier.utils.helper
+package com.example.xavier.widght.helper
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.example.xavier.R
-import com.example.xavier.app.api.ConstantPool
 import com.example.xavier.app.api.ConstantPool.Companion.APP_NAME
 import com.example.xavier.base.viewstratum.fragment.SimpleFragment
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener

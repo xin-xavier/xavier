@@ -26,6 +26,12 @@ android {
                         "room.expandProjection": "true"]
             }
         }
+
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86'//, 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+
     }
 
     // Android Studio 默认生成的签名文件是 .jks 文件
@@ -168,8 +174,11 @@ dependencies {
      * Android智能下拉刷新框架-SmartRefreshLayout
      * github:
      *  https://github.com/scwang90/SmartRefreshLayout
+     * 无需混淆
      */
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'                 //必须 1.0.0 以上
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
 
     /**
      * ImmersionBar -- android 4.4以上沉浸式实现
@@ -213,5 +222,18 @@ dependencies {
     // leakcanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+
+    /**
+     * Bugly Android SDK
+     * 其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+     */
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+
+    /**
+     *  eventbus3.0
+     *  github:
+     *   https://www.jianshu.com/p/1e8191bc7bc2
+     */
+    implementation 'org.greenrobot:eventbus:3.2.0'
 
 }

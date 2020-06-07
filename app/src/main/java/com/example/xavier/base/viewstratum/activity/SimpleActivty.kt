@@ -32,8 +32,8 @@ abstract class SimpleActivty() : LifeLinksBaseActivity(),
     // 初始化状态栏
     protected open fun immersionBar() {
         ImmersionBar.with(activity)
-            .transparentStatusBar() //透明状态栏，不写默认透明色
-            .statusBarDarkFont(true) //状态栏字体是深色，不写默认为亮色
+            .transparentStatusBar() //透明状态栏
+            .statusBarDarkFont(true) //状态栏字体是深色
             .navigationBarColor(R.color.white) //导航栏颜色
             .navigationBarDarkIcon(true) //导航栏图标是深色，不写默认为亮色
             .init() //通过上面配置后初始化后方可成功调用

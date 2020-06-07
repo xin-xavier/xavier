@@ -1,35 +1,28 @@
 package com.example.xavier
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.blankj.utilcode.util.AppUtils
-import com.blankj.utilcode.util.DeviceUtils
-import com.example.prepotency.app.http.observer.HttpDefaultObserver
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_SELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_UNSELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.TABS
-import com.example.xavier.app.api.FieldConstant
 import com.example.xavier.base.viewstratum.activity.SimpleActivty
-import com.example.xavier.base.viewstratum.activity.SimpleDecorViewActivity
 import com.example.xavier.bean.entity.TabEntity
-import com.example.xavier.http.client.RetrofitHelper
+import com.example.xavier.bean.event.PassableFloatingActionButtonState
+import com.example.xavier.bean.event.StickEvent
 import com.example.xavier.main.HomeFragment
+import com.example.xavier.reserved.BlankFragment
 import com.example.xavier.utils.Utils
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_actionbar_view.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 class MainActivity : SimpleActivty() {
@@ -38,6 +31,8 @@ class MainActivity : SimpleActivty() {
 
     private var pressedTime: Long = 0
     private var pageItem = 0
+
+    private var aDefault: EventBus? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +46,16 @@ class MainActivity : SimpleActivty() {
         //Utils.instance?.versionUpdating(context)
 
         initData()
+
+        if (aDefault == null) {
+            aDefault = EventBus.getDefault()
+        }
+        if(!aDefault?.isRegistered(this)!!){
+            aDefault?.register(this)
+        }
+        floatingActionButton.setOnClickListener {
+            aDefault?.post(StickEvent())
+        }
 
         settingUpTheNavigator()
     }
@@ -137,6 +142,11 @@ class MainActivity : SimpleActivty() {
                     BlankFragment.newInstance(TABS[position], "")
                 }
             }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun fabStatusEvent(event: PassableFloatingActionButtonState) {
+        floatingActionButton.visibility = event.fabStatus
     }
 
 

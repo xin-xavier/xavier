@@ -8,10 +8,9 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.LayoutRes
 import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.LogUtils
 import com.example.xavier.R
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
-import com.example.xavier.utils.helper.ToolbarHelper
+import com.example.xavier.widght.helper.ToolbarHelper
 
 abstract class SelfishnessFragment : SimpleFragment(), OnPrepareListener {
 

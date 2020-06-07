@@ -1,11 +1,8 @@
-package com.example.xavier
+package com.example.xavier.reserved
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.xavier.base.viewstratum.fragment.SelfishnessFragment
+import com.example.xavier.R
 import com.example.xavier.base.viewstratum.fragment.SimpleDecorViewFragment
 
 // TODO: Rename parameter arguments, choose names that match

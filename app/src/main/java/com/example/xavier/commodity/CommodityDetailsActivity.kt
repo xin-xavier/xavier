@@ -6,10 +6,17 @@ import com.example.xavier.app.api.ConstantPool.Companion.COMMODITY
 import com.example.xavier.app.api.ConstantPool.Companion.DETAIL
 import com.example.xavier.app.api.ConstantPool.Companion.RECOMMEND
 import com.example.xavier.app.api.ConstantPool.Companion.WORD_OF_MOUTH
+import com.example.xavier.app.api.FieldConstant.Companion.GID
+import com.example.xavier.base.viewstratum.activity.BaseSelfishnessActivity
 import com.example.xavier.base.viewstratum.activity.SelfishnessActivity
+import com.example.xavier.bean.result.DetailsResult
+import com.example.xavier.commodity.contract.DetailsContract
+import com.example.xavier.commodity.contract.DetailsPresenter
 import kotlinx.android.synthetic.main.commodity_details_toolbar.*
 
-class CommodityDetailsActivity : SelfishnessActivity() {
+class CommodityDetailsActivity : BaseSelfishnessActivity<DetailsContract.Presenter<DetailsContract.View>>() ,DetailsContract.View {
+
+    private var gid=-1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +28,24 @@ class CommodityDetailsActivity : SelfishnessActivity() {
         statusbar()
     }
 
-    override fun init() {
+    override fun showDetails(detailsResult: DetailsResult) {
 
+    }
+
+    override fun showError(error: String) {
+
+    }
+
+    override fun init() {
+        intent.apply {
+            val extras = extras
+            gid=extras?.getInt(GID)!!
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.let { presenter?.details(gid) }
     }
 
     override fun toolbarLayoutRes(): Int {
@@ -44,5 +67,9 @@ class CommodityDetailsActivity : SelfishnessActivity() {
         //toolbarHelper.rootView?.background?.alpha=0
 
         toolbarLayout.getBackground().mutate().setAlpha(0)
+    }
+
+    override fun createPresenter(): DetailsContract.Presenter<DetailsContract.View>? {
+        return DetailsPresenter(this)
     }
 }

@@ -3,17 +3,24 @@ package com.example.xavier
 import android.app.Application
 import android.content.Context
 import android.os.Build
+import android.os.Process
 import androidx.multidex.MultiDex
 import com.blankj.utilcode.util.CrashUtils
+import com.blankj.utilcode.util.ProcessUtils
 import com.blankj.utilcode.util.SPStaticUtils
 import com.example.xavier.app.api.ConstantPool.Companion.PUSH_STATUS
 import com.example.xavier.app.notification.NotificationChannels
 import com.example.xavier.http.client.XavierHttpClient
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter
-import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import com.tencent.bugly.crashreport.CrashReport
+import com.tencent.bugly.crashreport.CrashReport.UserStrategy
+
+
+
 
 class XavierApplacation : Application() {
 
@@ -36,6 +43,18 @@ class XavierApplacation : Application() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannels.createAllNotificationChannels(instance)
         }
+
+        // 上报进程控制
+        val context = applicationContext
+        // 获取当前包名
+        val packageName = context.packageName
+        // 获取当前进程名
+        val processName = ProcessUtils.getCurrentProcessName()
+        // 设置是否为上报进程
+        val strategy = UserStrategy(context)
+        strategy.isUploadProcess = processName == null || processName == packageName
+        // 测试阶段设置成true，发布时设置为false。
+        CrashReport.initCrashReport(this, "98bbd0df98", true);
     }
 
     // Error: null, Cannot fit requested classes in a single dex file (# methods: 66116 > 65536)

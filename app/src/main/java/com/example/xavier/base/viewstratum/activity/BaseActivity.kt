@@ -12,6 +12,7 @@ abstract class BaseActivity<P: IBasePresenter<*>>  : SimpleActivty(){
         presenter?.let {
             lifecycle.addObserver(it)
         }
+
     }
 
     protected abstract fun createPresenter(): P?

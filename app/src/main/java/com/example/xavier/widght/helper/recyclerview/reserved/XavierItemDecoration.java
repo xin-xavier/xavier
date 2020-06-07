@@ -1,6 +1,7 @@
-package com.example.xavier.utils;
+package com.example.xavier.widght.helper.recyclerview.reserved;
 
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -32,16 +33,20 @@ public class XavierItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         //super.getItemOffsets(outRect, view, parent, state);
-        int position = parent.getChildAdapterPosition(view);
-        int totalCount = parent.getAdapter().getItemCount();
-        // Log.i("XavierItemDecoration", "getItemOffsets: " + "position = " + position + " --- totalCount = " + totalCount);
+
+        int position = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
+        int itemCount = parent.getAdapter().getItemCount();
+
+        Log.i("XavierItemDecoration", "getItemOffsets: " + "position = " + position + " --- itemCount = " + itemCount);
+
         // 无 Header position == 0 == 第一个
         // 有 Header position == 1 == 第一个
         // position == totalCount - 1 == 最后一个
+
         if (existHeader == 0) {
             if (position >= 0) {
                 int oddEven = position % 2;
-                if (position != totalCount - 1) {
+                if (position != itemCount - 1) {
                     usualDivide(outRect, oddEven);
                 } else {
                     lastDivide(outRect, oddEven);
@@ -50,7 +55,7 @@ public class XavierItemDecoration extends RecyclerView.ItemDecoration {
         } else {
             if (position >= 1) {
                 int oddEven = position % 2;
-                if (position != totalCount - 1) {
+                if (position != itemCount - 1) {
                     usualDivide(outRect, oddEven);
                 } else {
                     lastDivide(outRect, oddEven);
@@ -60,13 +65,13 @@ public class XavierItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private void usualDivide(@NonNull Rect outRect, int oddEven) {
-        divide(outRect,oddEven);
+        divide(outRect, oddEven);
         outRect.top = longDivide;
         outRect.bottom = 0;
     }
 
     private void lastDivide(@NonNull Rect outRect, int oddEven) {
-        divide(outRect,oddEven);
+        divide(outRect, oddEven);
         outRect.top = longDivide;
         outRect.bottom = longDivide;
     }

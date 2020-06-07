@@ -1,4 +1,4 @@
-package com.example.xavier.utils;
+package com.example.xavier.widght.helper.recyclerview.reserved;
 
 import android.content.Context;
 import android.graphics.Rect;

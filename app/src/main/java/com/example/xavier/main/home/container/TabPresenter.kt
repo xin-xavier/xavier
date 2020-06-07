@@ -24,6 +24,7 @@ class TabPresenter(view: TabContract.View) : BasePresenter<TabContract.View>(vie
                     view?.showSlideShow(t)
                 }
                 override fun onError(errorMsg: String) {
+                    view?.slideShowError(errorMsg)
                 }
             })
     }
@@ -43,6 +44,7 @@ class TabPresenter(view: TabContract.View) : BasePresenter<TabContract.View>(vie
                 }
 
                 override fun onError(errorMsg: String) {
+                    view?.adError(errorMsg)
                 }
             })
     }
@@ -62,6 +64,7 @@ class TabPresenter(view: TabContract.View) : BasePresenter<TabContract.View>(vie
                 }
 
                 override fun onError(errorMsg: String) {
+                    view?.subClassError(errorMsg)
                 }
             })
     }
@@ -82,6 +85,7 @@ class TabPresenter(view: TabContract.View) : BasePresenter<TabContract.View>(vie
                 }
 
                 override fun onError(errorMsg: String) {
+                    view?.choiceShopError(errorMsg)
                 }
             })
     }
@@ -102,7 +106,7 @@ class TabPresenter(view: TabContract.View) : BasePresenter<TabContract.View>(vie
                 }
 
                 override fun onError(errorMsg: String) {
-                    view?.showError(errorMsg)
+                    view?.hotError(errorMsg)
                 }
             })
     }

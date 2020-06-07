@@ -11,7 +11,7 @@ import androidx.annotation.LayoutRes
 import com.blankj.utilcode.util.BarUtils
 import com.example.xavier.R
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
-import com.example.xavier.utils.helper.ToolbarHelper
+import com.example.xavier.widght.helper.ToolbarHelper
 import kotlinx.android.synthetic.main.layout_init_toobar_view.*
 
 abstract class SimpleDecorViewFragment : SimpleFragment(), OnPrepareListener {

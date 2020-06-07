@@ -1,14 +1,13 @@
 package com.example.xavier.http
 
 import com.example.prepotency.bean.result.*
+import com.example.xavier.app.api.FieldConstant.Companion.GID
 import com.example.xavier.app.api.FieldConstant.Companion.PAGE
 import com.example.xavier.app.api.FieldConstant.Companion.PID
 import com.example.xavier.bean.result.BaseData
+import com.example.xavier.bean.result.DetailsResult
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface Server {
 
@@ -17,11 +16,11 @@ interface Server {
     @FormUrlEncoded
     fun versionUpdating(@FieldMap map: Map<String, String>): Observable<BaseData<VersionUpdatingResult>>
 
-    //头部分类
+    //  头部分类
     @POST("v3/home/topClass")
     fun topClass(): Observable<BaseData<List<TopClassResult>>>
 
-    //首页轮播图
+    //  首页轮播图
     @POST("v3/home/slideShow")
     @FormUrlEncoded
     fun slideShow(@Field(PID) pid: Int): Observable<BaseData<List<SlideShowResult>>>
@@ -55,5 +54,10 @@ interface Server {
      */
     @POST("v3/live/anchor/getUserHasLiveDemand")
     fun getUserHasLiveDemand(): Observable<BaseData<String>>
+
+    //  商品详情
+    @POST("v3/goods/details")
+    @FormUrlEncoded
+    fun details(@Field(GID) gid: Int): Observable<BaseData<DetailsResult>>
 
 }

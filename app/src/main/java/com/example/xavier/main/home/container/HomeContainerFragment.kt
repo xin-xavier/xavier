@@ -11,7 +11,7 @@ abstract class HomeContainerFragment :
     private var cid: Int = 0
     protected var pageItem: Int = 0
 
-    private var page: Int = 1
+    protected var page: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
