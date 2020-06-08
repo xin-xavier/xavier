@@ -1,7 +1,7 @@
 package com.example.xavier.main.home
 
-import com.example.prepotency.app.http.observer.HttpDefaultObserver
-import com.example.prepotency.bean.result.TopClassResult
+import com.example.xavier.app.http.observer.HttpDefaultObserver
+import com.example.xavier.bean.result.TopClassResult
 import com.example.xavier.base.presenter.BasePresenter
 import com.example.xavier.http.client.RetrofitHelper
 import io.reactivex.android.schedulers.AndroidSchedulers

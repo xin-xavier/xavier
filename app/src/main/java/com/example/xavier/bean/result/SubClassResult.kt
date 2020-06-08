@@ -1,4 +1,4 @@
-package com.example.prepotency.bean.result
+package com.example.xavier.bean.result
 
 import android.os.Parcel
 import android.os.Parcelable

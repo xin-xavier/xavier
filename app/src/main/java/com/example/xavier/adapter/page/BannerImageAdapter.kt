@@ -8,10 +8,11 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.SizeUtils
-import com.example.prepotency.bean.result.SlideShowResult
 import com.example.xavier.R
+import com.example.xavier.bean.result.SlideShowResult
 import com.example.xavier.utils.GlideEngineLoging
 import com.youth.banner.adapter.BannerAdapter
+
 
 class BannerImageAdapter(slideList: List<SlideShowResult>) :
     BannerAdapter<SlideShowResult, BannerImageAdapter.BannerViewHolder>(
@@ -44,7 +45,7 @@ class BannerImageAdapter(slideList: List<SlideShowResult>) :
         position: Int,
         size: Int
     ) {
-        LogUtils.i("BannerImageAdapter", "onBindView: " + position)
+        //LogUtils.i("BannerImageAdapter", "onBindView: " + position)
         GlideEngineLoging.createGlideEngine()
             .loadImageAsResId(context, data.image, R.drawable.banner_map, holder.imageView)
     }

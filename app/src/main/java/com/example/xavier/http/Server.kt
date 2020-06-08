@@ -1,13 +1,16 @@
 package com.example.xavier.http
 
-import com.example.prepotency.bean.result.*
 import com.example.xavier.app.api.FieldConstant.Companion.GID
 import com.example.xavier.app.api.FieldConstant.Companion.PAGE
 import com.example.xavier.app.api.FieldConstant.Companion.PID
-import com.example.xavier.bean.result.BaseData
-import com.example.xavier.bean.result.DetailsResult
+import com.example.xavier.bean.result.*
+import com.example.xavier.bean.result.dataclass.DetailsData
 import io.reactivex.Observable
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FieldMap
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
+
 
 interface Server {
 
@@ -49,7 +52,7 @@ interface Server {
     fun classGoods(@FieldMap map: MutableMap<String, Int?>): Observable<BaseData<HotResult>>
 
     /**
-     * @method 判断是否有位结束的
+     * @method 判断是否有未结束的
      * @url v3/live/anchor/getUserHasLiveDemand
      */
     @POST("v3/live/anchor/getUserHasLiveDemand")
@@ -58,6 +61,6 @@ interface Server {
     //  商品详情
     @POST("v3/goods/details")
     @FormUrlEncoded
-    fun details(@Field(GID) gid: Int): Observable<BaseData<DetailsResult>>
+    fun details(@Field(GID) gid: Int): Observable<BaseData<DetailsData>>
 
 }

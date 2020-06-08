@@ -1,4 +1,4 @@
-package com.example.prepotency.bean.result
+package com.example.xavier.bean.result
 
 class VersionUpdatingResult {
     /**
@@ -9,7 +9,8 @@ class VersionUpdatingResult {
      */
     private var version: String = ""
     private var content: String = ""
-    private var enforce = 0
+    // 指定一个默认值
+    private var enforce = -1
     private var code = 0
 
     fun getVersion(): String {

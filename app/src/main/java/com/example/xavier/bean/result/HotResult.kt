@@ -1,9 +1,7 @@
-package com.example.prepotency.bean.result
+package com.example.xavier.bean.result
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.prepotency.bean.result.HotResult.RowsBean
-import java.util.*
 import kotlin.collections.ArrayList
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")

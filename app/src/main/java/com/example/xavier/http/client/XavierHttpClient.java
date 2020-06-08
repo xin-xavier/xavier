@@ -3,6 +3,8 @@ package com.example.xavier.http.client;
 import android.content.Context;
 import android.util.Log;
 
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.example.xavier.BuildConfig;
 import com.example.xavier.utils.XavierLogUtils;
@@ -27,7 +29,9 @@ import static com.example.xavier.app.api.ConstantPool.OK_CACHE_SIZE;
 import static com.example.xavier.app.api.ConstantPool.OK_CACHE_STALE_SEC;
 import static com.example.xavier.app.api.ConstantPool.OK_TAG;
 import static com.example.xavier.app.api.ConstantPool.PRAGMA;
+import static com.example.xavier.app.api.FieldConstant.MODEL;
 import static com.example.xavier.app.api.FieldConstant.TOKEN;
+import static com.example.xavier.app.api.FieldConstant.VERSION;
 
 public class XavierHttpClient {
 
@@ -73,10 +77,17 @@ public class XavierHttpClient {
                     Log.e(OK_TAG, "no network");
                 }
 
+                Request.Builder headerBuider = request
+                        .newBuilder()
+                        .header(VERSION, AppUtils.getAppVersionName())
+                        .header(MODEL, DeviceUtils.getManufacturer());
+
                 if (login) {
-                    request = request.newBuilder().header(TOKEN, token).method(request.method()
-                            , request.body()).build();
+                    headerBuider.header(TOKEN, token);
                 }
+
+                request = headerBuider.method(request.method()
+                        , request.body()).build();
 
                 Response originalResponse = chain.proceed(request);
                 if (NetworkUtils.isConnected()) {
@@ -104,6 +115,7 @@ public class XavierHttpClient {
                         public void log(@NotNull String message) {
                             //Log.i(OK_TAG, message);
                             XavierLogUtils.INSTANCE.longInfo(OK_TAG,message);
+                            //XavierLogUtils.INSTANCE.jsonInfo(OK_TAG,message);
                         }
                     });
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

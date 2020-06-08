@@ -10,12 +10,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.prepotency.bean.result.TopClassResult
 import com.example.xavier.R
 import com.example.xavier.app.api.ConstantPool.Companion.BIG_SCALE
 import com.example.xavier.app.api.ConstantPool.Companion.LITTLE_SCALE
 import com.example.xavier.app.api.FieldConstant.Companion.PAGE_NAME
 import com.example.xavier.base.viewstratum.fragment.BaseSelfishnessFragment
+import com.example.xavier.bean.result.TopClassResult
 import com.example.xavier.main.home.HomeContract
 import com.example.xavier.main.home.HomePresenter
 import com.example.xavier.main.home.container.HomeContainerFragment

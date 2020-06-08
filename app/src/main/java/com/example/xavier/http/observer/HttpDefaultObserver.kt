@@ -1,6 +1,5 @@
-package com.example.prepotency.app.http.observer
+package com.example.xavier.app.http.observer
 
-import android.util.Log
 import com.example.xavier.app.AppManager
 import com.example.xavier.bean.result.BaseData
 import com.example.xavier.http.api.BusinessHttpException
@@ -20,6 +19,7 @@ import java.net.UnknownHostException
  * @author zs
  * @date 2020-03-13
  */
+@Suppress("UNCHECKED_CAST")
 abstract class HttpDefaultObserver<T> : Observer<BaseData<T>>, HttpfinishCallback<T> {
 
     override fun onComplete() {
@@ -30,25 +30,29 @@ abstract class HttpDefaultObserver<T> : Observer<BaseData<T>>, HttpfinishCallbac
     }
 
     override fun onNext(t: BaseData<T>) {
-        if (t.code==200) {
-            if (t.result==null){
+        if (t.code == 200) {
+            if (t.result == null) {
                 try {
-                    val tClass = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
+                    /*val tClass = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<*>
+                    t.result = tClass.newInstance() as T?*/
+                    val tClass =
+                        (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
                     t.result = tClass.newInstance()
-                }catch (e : ClassCastException){
+                } catch (e: ClassCastException) {
                     e.printStackTrace()
                 }
             }
             t.result?.let { onSuccess(it) }
         }
         //code!=0代表业务出错，进行过滤
-        else{
-            filterCode(t.msg,t.code)
+        else {
+            filterCode(t.msg, t.code)
         }
     }
 
     override fun onError(e: Throwable) {
-        // Log.i("Throwable","onError: "+ System.currentTimeMillis())
+        //Log.e("Throwable","onError: "+ System.currentTimeMillis())
+        //Log.e("Throwable","onError: "+ e.message)
         // com.example.zs_wan_android I/Throwable: onError: 1587277284516
         // 调用 onError() 标志事件结束 所以只会运行一次
         val errorMsg = if (e is UnknownHostException) {
@@ -59,11 +63,11 @@ abstract class HttpDefaultObserver<T> : Observer<BaseData<T>>, HttpfinishCallbac
             "连接超时"
         } else if (e is ConnectException) {
             "连接错误"
-        } else if (e is BusinessHttpException){
+        } else if (e is BusinessHttpException) {
             e.businessMessage
             //Log.i("BusinessHttpException","onError: "+ e.businessMessage)
             // com.example.zs_wan_android I/BusinessHttpException: onError: 请先登录！
-        } else{
+        } else {
             "未知错误"
         }
         e.printStackTrace()

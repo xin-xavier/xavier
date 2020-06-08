@@ -8,10 +8,10 @@ import com.example.xavier.app.api.ConstantPool.Companion.RECOMMEND
 import com.example.xavier.app.api.ConstantPool.Companion.WORD_OF_MOUTH
 import com.example.xavier.app.api.FieldConstant.Companion.GID
 import com.example.xavier.base.viewstratum.activity.BaseSelfishnessActivity
-import com.example.xavier.base.viewstratum.activity.SelfishnessActivity
-import com.example.xavier.bean.result.DetailsResult
+import com.example.xavier.bean.result.dataclass.DetailsData
 import com.example.xavier.commodity.contract.DetailsContract
 import com.example.xavier.commodity.contract.DetailsPresenter
+import com.example.xavier.utils.XavierLogUtils
 import kotlinx.android.synthetic.main.commodity_details_toolbar.*
 
 class CommodityDetailsActivity : BaseSelfishnessActivity<DetailsContract.Presenter<DetailsContract.View>>() ,DetailsContract.View {
@@ -28,8 +28,8 @@ class CommodityDetailsActivity : BaseSelfishnessActivity<DetailsContract.Present
         statusbar()
     }
 
-    override fun showDetails(detailsResult: DetailsResult) {
-
+    override fun showDetails(detailsData: DetailsData) {
+        XavierLogUtils.longInfo(TAG,detailsData.toString())
     }
 
     override fun showError(error: String) {

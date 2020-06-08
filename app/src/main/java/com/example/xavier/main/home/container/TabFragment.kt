@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ScreenUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
-import com.example.prepotency.bean.result.*
 import com.example.xavier.R
 import com.example.xavier.adapter.list.ProductListAdapter
 import com.example.xavier.adapter.page.BannerImageAdapter
 import com.example.xavier.app.api.FieldConstant.Companion.GID
 import com.example.xavier.bean.event.PassableFloatingActionButtonState
 import com.example.xavier.bean.event.StickEvent
+import com.example.xavier.bean.result.*
 import com.example.xavier.commodity.CommodityDetailsActivity
 import com.example.xavier.utils.GlideEngineLoging
 import com.example.xavier.widght.helper.recyclerview.XavierGridItemDecoration
@@ -76,7 +76,6 @@ class TabFragment : HomeContainerFragment() {
                 ) {
                     val bundle = Bundle()
                     bundle.putInt(GID, rowsList.get(position).id)
-
                     intent(CommodityDetailsActivity::class.java, bundle)
                 }
             })
@@ -96,10 +95,7 @@ class TabFragment : HomeContainerFragment() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     totalDy += dy
-                    Log.i(
-                        TAG,
-                        "onScrolled: dy = " + dy + " --- totalDy = " + totalDy + " --- screenHeight = " + screenHeight
-                    )
+                    //Log.i(TAG, "onScrolled: dy = " + dy + " --- totalDy = " + totalDy + " --- screenHeight = " + screenHeight)
                     if (totalDy > screenHeight) {
                         if (fabStatus == View.INVISIBLE) {
                             fabStatus = View.VISIBLE

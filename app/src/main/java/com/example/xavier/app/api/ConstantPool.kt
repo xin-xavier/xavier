@@ -5,12 +5,12 @@ import com.example.xavier.R
 /**
  * App 常量池
  */
-interface ConstantPool {
+public interface ConstantPool {
     companion object {
         const val APP_NAME = "Xavier"
         const val XAVIER = "Xavier"
 
-        const val OK_TAG = "OKHttpClient: "
+        const val OK_TAG = "OKHttpClient"
         const val OK_CACHE_STALE_SEC = 60 * 60 * 24 * 2.toLong() // 设缓存有效期为两天
         const val OK_CACHE_SIZE = 1024 * 1024 * 100 // 设缓存为100M
         const val OK_CACHE_DIR = "cacheDir" // 缓存路径

@@ -1,6 +1,6 @@
 package com.example.xavier.main.home
 
-import com.example.prepotency.bean.result.TopClassResult
+import com.example.xavier.bean.result.TopClassResult
 import com.example.xavier.base.presenter.IBasePresenter
 import com.example.xavier.base.viewstratum.presentation.ViewPresentation
 

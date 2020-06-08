@@ -4,7 +4,7 @@ import android.util.Log
 import com.blankj.utilcode.util.SpanUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.example.prepotency.bean.result.HotResult
+import com.example.xavier.bean.result.HotResult
 import com.example.xavier.R
 import com.example.xavier.app.api.ConstantPool
 import com.example.xavier.app.api.Enumerations

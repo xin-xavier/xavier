@@ -43,7 +43,7 @@ class MainActivity : SimpleActivty() {
         Utils.instance?.showUserAgreement(context)
 
         // 检查版本更新
-        //Utils.instance?.versionUpdating(context)
+        Utils.instance?.versionUpdating(context)
 
         initData()
 

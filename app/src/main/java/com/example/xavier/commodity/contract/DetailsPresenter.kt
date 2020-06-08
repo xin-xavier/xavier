@@ -1,8 +1,8 @@
 package com.example.xavier.commodity.contract
 
-import com.example.prepotency.app.http.observer.HttpDefaultObserver
+import com.example.xavier.app.http.observer.HttpDefaultObserver
 import com.example.xavier.base.presenter.BasePresenter
-import com.example.xavier.bean.result.DetailsResult
+import com.example.xavier.bean.result.dataclass.DetailsData
 import com.example.xavier.http.client.RetrofitHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -15,12 +15,12 @@ class DetailsPresenter(view: DetailsContract.View) : BasePresenter<DetailsContra
             .details(gid)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : HttpDefaultObserver<DetailsResult>(){
+            .subscribe(object : HttpDefaultObserver<DetailsData>(){
                 override fun disposable(d: Disposable) {
                     addSubscribe(d)
                 }
 
-                override fun onSuccess(t: DetailsResult) {
+                override fun onSuccess(t: DetailsData) {
                     view?.showDetails(t)
                 }
 

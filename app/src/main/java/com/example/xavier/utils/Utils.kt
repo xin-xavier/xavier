@@ -4,8 +4,8 @@ import android.content.Context
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.DeviceUtils
 import com.blankj.utilcode.util.SPStaticUtils
-import com.example.prepotency.app.http.observer.HttpDefaultObserver
-import com.example.prepotency.bean.result.VersionUpdatingResult
+import com.example.xavier.app.http.observer.HttpDefaultObserver
+import com.example.xavier.bean.result.VersionUpdatingResult
 import com.example.xavier.app.api.ConstantTransmit.Companion.USER_AGREEMENT
 import com.example.xavier.app.api.FieldConstant.Companion.MODEL
 import com.example.xavier.app.api.FieldConstant.Companion.VERSION

@@ -73,6 +73,9 @@ android {
 
     // The dependency contains Java 8 bytecode. Please enable desugaring by adding the following to build.gradle
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -101,7 +104,9 @@ dependencies {
     //noinspection GradleCompatible
     //implementation 'com.android.support:design:28.0.0'
     // 迁移到 Androidx
-    implementation 'com.google.android.material:material:1.2.0-beta01'
+    implementation 'com.google.android.material:material:1.3.0-alpha01'
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.5'
 
     /**
      * AndroidAutoSize 今日头条屏幕适配方案终极版
@@ -126,6 +131,8 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     // Retrofit通过GSON将结果转换为Bean对象
+    // Gson的安全问题
+    // https://mp.weixin.qq.com/s/jVRTFTiwTtr7P7vyAj8G7A
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // scalars 数据解析器
     implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
@@ -167,7 +174,11 @@ dependencies {
      */
     implementation 'com.github.hackware1993:MagicIndicator:1.6.0'
 
-    // banner
+    /**
+     * banner
+     * github:
+     *  https://github.com/youth5201314/banner
+     */
     implementation 'com.youth.banner:banner:2.0.8'
 
     /**
