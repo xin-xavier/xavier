@@ -139,13 +139,13 @@ class TabFragment : HomeContainerFragment() {
 
     private fun getBannerHeader(slideList: List<SlideShowResult>): View {
         val view = getBannerLayout()
-        val imageAdapter = BannerImageAdapter(slideList);
+        val imageAdapter = BannerImageAdapter(slideList)
         val banner =
             view.findViewById<Banner<SlideShowResult, BannerAdapter<SlideShowResult, BannerImageAdapter.BannerViewHolder>>>(
                 R.id.banner
             )
         banner.adapter = imageAdapter
-        banner.setBannerGalleryMZ(20);
+        banner.setBannerGalleryMZ(20)
         return view
     }
 

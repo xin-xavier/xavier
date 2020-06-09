@@ -4,9 +4,9 @@ import android.os.Bundle
 import com.blankj.utilcode.util.SPStaticUtils
 import com.example.xavier.MainActivity
 import com.example.xavier.app.api.ConstantTransmit.Companion.SPLASH
-import com.example.xavier.base.viewstratum.activity.SimpleActivty
+import com.example.xavier.base.viewstratum.activity.SimpleActivity
 
-class SplashActivity : SimpleActivty() {
+class SplashActivity : SimpleActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

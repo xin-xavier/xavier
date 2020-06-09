@@ -3,7 +3,6 @@ package com.example.xavier
 import android.app.Application
 import android.content.Context
 import android.os.Build
-import android.os.Process
 import androidx.multidex.MultiDex
 import com.blankj.utilcode.util.CrashUtils
 import com.blankj.utilcode.util.ProcessUtils
@@ -18,9 +17,6 @@ import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy
-
-
-
 
 class XavierApplacation : Application() {
 

@@ -1,7 +1,12 @@
 package com.example.xavier.commodity
 
 import android.os.Bundle
+import android.util.Log
+import com.blankj.utilcode.util.BarUtils
+import com.blankj.utilcode.util.StringUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.example.xavier.R
+import com.example.xavier.adapter.page.BannerHaveVideoAdapter
 import com.example.xavier.app.api.ConstantPool.Companion.COMMODITY
 import com.example.xavier.app.api.ConstantPool.Companion.DETAIL
 import com.example.xavier.app.api.ConstantPool.Companion.RECOMMEND
@@ -9,67 +14,112 @@ import com.example.xavier.app.api.ConstantPool.Companion.WORD_OF_MOUTH
 import com.example.xavier.app.api.FieldConstant.Companion.GID
 import com.example.xavier.base.viewstratum.activity.BaseSelfishnessActivity
 import com.example.xavier.bean.result.dataclass.DetailsData
+import com.example.xavier.bean.viewholder.VideoHolder
 import com.example.xavier.commodity.contract.DetailsContract
 import com.example.xavier.commodity.contract.DetailsPresenter
 import com.example.xavier.utils.XavierLogUtils
-import kotlinx.android.synthetic.main.commodity_details_toolbar.*
+import com.example.xavier.widght.NumIndicator
+import com.example.xavier.widght.helper.ViewGroupHelper
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+import com.youth.banner.config.IndicatorConfig
+import com.youth.banner.listener.OnPageChangeListener
+import kotlinx.android.synthetic.main.details_toolbar.*
 
-class CommodityDetailsActivity : BaseSelfishnessActivity<DetailsContract.Presenter<DetailsContract.View>>() ,DetailsContract.View {
+class CommodityDetailsActivity :
+    BaseSelfishnessActivity<DetailsContract.Presenter<DetailsContract.View>>(),
+    DetailsContract.View {
 
-    private var gid=-1
+    private var gid = -1
+    val imageList = arrayListOf<String>()
+    private lateinit var bannerAdapter:BannerHaveVideoAdapter
+
+    var player: StandardGSYVideoPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_commodity_details)
     }
 
-    override fun immersionBar() {
-        super.immersionBar()
-        statusbar()
-    }
-
-    override fun showDetails(detailsData: DetailsData) {
-        XavierLogUtils.longInfo(TAG,detailsData.toString())
-    }
-
-    override fun showError(error: String) {
-
-    }
-
     override fun init() {
         intent.apply {
             val extras = extras
-            gid=extras?.getInt(GID)!!
+            gid = extras?.getInt(GID)!!
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
         presenter.let { presenter?.details(gid) }
     }
 
-    override fun toolbarLayoutRes(): Int {
-        return R.layout.commodity_details_toolbar
-    }
-
     override fun onPrepare() {
+        super.onPrepare()
+
+        //appbarBg.setImageResource(R.mipmap.sona_buvelle)
+
+        ViewGroupHelper.setTopMargin(returnPager, BarUtils.getStatusBarHeight())
+
+        bannerAdapter=BannerHaveVideoAdapter(context, imageList)
+
+        banner.adapter=bannerAdapter
+        banner.setIndicator( NumIndicator(this))
+            //.setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
+            .addOnPageChangeListener(object : OnPageChangeListener {
+                override fun onPageScrollStateChanged(state: Int) {
+                }
+
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    Log.e(TAG, "onPageScrolled: position:$position")
+                    if (player == null) {
+                        val viewHolder =
+                            banner.adapter.viewHolder
+                        if (viewHolder is VideoHolder) {
+                            val holder: VideoHolder = viewHolder as VideoHolder
+                            player = holder.player
+                        }
+                        return
+                    }
+                    if (position != 0) {
+                        player?.onVideoReset()
+                    }
+                }
+
+                override fun onPageSelected(position: Int) {
+                }
+
+            })
+
+
         tabLayout.addTab(tabLayout.newTab().setText(COMMODITY))
         tabLayout.addTab(tabLayout.newTab().setText(WORD_OF_MOUTH))
         tabLayout.addTab(tabLayout.newTab().setText(DETAIL))
         tabLayout.addTab(tabLayout.newTab().setText(RECOMMEND))
+    }
 
+    override fun showDetails(detailsData: DetailsData) {
+        XavierLogUtils.longInfo(TAG, detailsData.toString())
+        val rows = detailsData.rows
+        val images =rows.images
+        val video = rows.video
+        if(!StringUtils.isEmpty(video)){
+            imageList.add(video)
+        }
+        if(images!=null && images.size >0){
+            imageList.addAll(images)
+        }
+        bannerAdapter.notifyDataSetChanged()
+    }
 
-        //toolbarLayout.background =ResourceUtils.getDrawable(R.drawable.b_14100e_r4)
-        //toolbarLayout.background.alpha=225
-        //toolbarLayout.background.alpha=0
+    override fun showError(error: String) {
+        ToastUtils.showShort(error)
+    }
 
-        //toolbarHelper.rootView?.background = ResourceUtils.getDrawable(R.drawable.b_14100e_r4)
-        //toolbarHelper.rootView?.background?.alpha=0
-
-        toolbarLayout.getBackground().mutate().setAlpha(0)
+    override fun toolbarLayoutRes(): Int {
+        return R.layout.details_toolbar
     }
 
     override fun createPresenter(): DetailsContract.Presenter<DetailsContract.View>? {
         return DetailsPresenter(this)
     }
+
 }

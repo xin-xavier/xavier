@@ -2,21 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/toolbarLayout"
-    android:alpha="0"
     android:layout_width="match_parent"
-    android:layout_height="375dp"
-    android:background="@color/transparent">
+    android:layout_height="375dp">
 
     <com.youth.banner.Banner
+        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="375dp" />
+        android:layout_height="match_parent"
+        app:is_infinite_loop="false"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@id/returnPager"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
         android:layout_marginStart="17dp"
         android:contentDescription="@string/imageView"
         android:scaleType="centerCrop"
@@ -26,8 +26,8 @@
         android:id="@id/navMenu"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_alignTop="@+id/returnPager"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
         android:layout_marginEnd="17dp"
         android:contentDescription="@string/imageView"
         android:scaleType="centerCrop"
@@ -41,7 +41,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_centerInParent="true"
+        android:layout_alignTop="@+id/returnPager"
         android:layout_marginStart="17dp"
         android:layout_marginEnd="17dp"
         android:layout_toStartOf="@+id/navMenu"
@@ -52,5 +52,6 @@
         app:tabSelectedTextColor="@color/mainOrange"
         app:tabTextAppearance="@style/tabLayoutTextSize"
         app:tabTextColor="@color/colorAccent" />
+
 
 </RelativeLayout>

@@ -105,6 +105,25 @@ public class GlideEngineLoging implements ImageEngineLoging {
                 .into(imageView);
     }
 
+    // 上下文判断 Bitmap 中心作物 默认压缩 三级缓存 默认占位图
+    public void loadAsBitmapImage(Context context, @NonNull String url,
+                                  @NonNull ImageView imageView) {
+        if (context != null) {
+            Glide.with(context)
+                    .asBitmap()
+                    .centerCrop() // 中心作物
+                    .sizeMultiplier(SIZE_MULTIPLIER)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.null_map)//图片加载出来前，显示的图片
+                    .fallback(R.drawable.null_map) //url为空的时候,显示的图片
+                    .error(R.drawable.null_map)//图片加载失败后，显示的图片
+                    .load(url)
+                    .into(imageView);
+        } else {
+            imageView.setImageResource(R.drawable.placeholder_map);
+        }
+    }
+
     // 上下文判断 Bitmap 中心作物 默认压缩 三级缓存 默认空图片 默认圆角
     public void loadDefaultImage(Context context, @NonNull String url,
                                  @NonNull ImageView imageView) {
@@ -133,7 +152,6 @@ public class GlideEngineLoging implements ImageEngineLoging {
         }
     }
 
-    // 上下文判断 Bitmap 中心作物 默认压缩 三级缓存 默认占位图 默认圆角
     public void loadDefaultMapImage(Context context, @NonNull String url,
                                     @NonNull ImageView imageView) {
         if (context != null) {

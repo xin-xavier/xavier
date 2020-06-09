@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import com.blankj.utilcode.util.SizeUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.example.xavier.R
 import com.example.xavier.app.api.ConstantPool.Companion.APP_NAME
@@ -11,7 +12,7 @@ import com.example.xavier.base.viewstratum.fragment.SimpleFragment
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 
 
-class ToolbarHelper : SimpleFragment, View.OnClickListener {
+class AppbarHelper : SimpleFragment, View.OnClickListener {
 
     var rootHeight : Int=0
 
@@ -33,6 +34,8 @@ class ToolbarHelper : SimpleFragment, View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         rootView.let {
             rootHeight = rootView?.layoutParams?.height!!
+            val px2dp = SizeUtils.px2dp(rootHeight.toFloat())
+            Log.i(TAG, "onViewCreated: rootHeight = $contentLayoutId --- px2dp = $px2dp")
         }
         if (contentLayoutId != 0) {
             when (contentLayoutId) {

@@ -11,13 +11,13 @@ import androidx.annotation.LayoutRes
 import com.blankj.utilcode.util.BarUtils
 import com.example.xavier.R
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
-import com.example.xavier.widght.helper.ToolbarHelper
+import com.example.xavier.widght.helper.AppbarHelper
 import kotlinx.android.synthetic.main.layout_init_toobar_view.*
 
 abstract class SimpleDecorViewFragment : SimpleFragment(), OnPrepareListener {
 
     protected lateinit var inflater: LayoutInflater
-    protected lateinit var toolbarHelper: ToolbarHelper
+    protected lateinit var toolbarHelper: AppbarHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,7 +48,7 @@ abstract class SimpleDecorViewFragment : SimpleFragment(), OnPrepareListener {
     open fun setToolbar(@LayoutRes toolbarLayoutResID: Int) {
         val beginTransaction = childFragmentManager.beginTransaction()
         toolbarHelper =
-            ToolbarHelper(
+            AppbarHelper(
                 toolbarLayoutResID,
                 this
             )

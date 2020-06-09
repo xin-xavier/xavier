@@ -10,12 +10,12 @@ import androidx.annotation.LayoutRes
 import com.blankj.utilcode.util.BarUtils
 import com.example.xavier.R
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
-import com.example.xavier.widght.helper.ToolbarHelper
+import com.example.xavier.widght.helper.AppbarHelper
 
 abstract class SelfishnessFragment : SimpleFragment(), OnPrepareListener {
 
     protected lateinit var inflater: LayoutInflater
-    protected lateinit var toolbarHelper: ToolbarHelper
+    protected lateinit var toolbarHelper: AppbarHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +52,7 @@ abstract class SelfishnessFragment : SimpleFragment(), OnPrepareListener {
     ) {
         val beginTransaction = childFragmentManager.beginTransaction()
         toolbarHelper =
-            ToolbarHelper(
+            AppbarHelper(
                 toolbarLayoutResID,
                 this
             )

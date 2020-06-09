@@ -7,11 +7,11 @@ abstract class BaseDecorViewActivity<P : IBasePresenter<*>> : SimpleDecorViewAct
     protected var presenter: P? = null
 
     override fun setContentView(layoutResID: Int) {
-        super.setContentView(layoutResID)
         presenter = createPresenter()
         presenter?.let {
             lifecycle.addObserver(it)
         }
+        super.setContentView(layoutResID)
     }
 
     protected abstract fun createPresenter(): P?

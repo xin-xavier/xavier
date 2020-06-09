@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_SELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.ICON_UNSELECT_IDS
 import com.example.xavier.app.api.ConstantPool.Companion.TABS
-import com.example.xavier.base.viewstratum.activity.SimpleActivty
+import com.example.xavier.base.viewstratum.activity.SimpleActivity
 import com.example.xavier.bean.entity.TabEntity
 import com.example.xavier.bean.event.PassableFloatingActionButtonState
 import com.example.xavier.bean.event.StickEvent
@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
-class MainActivity : SimpleActivty() {
+class MainActivity : SimpleActivity() {
 
     private val tabEntities = ArrayList<CustomTabEntity>()
 

@@ -11,31 +11,33 @@ import com.example.xavier.login.LoginActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.jaeger.library.StatusBarUtil
 
-abstract class SimpleActivty() : LifeLinksBaseActivity(),
+abstract class SimpleActivity() : LifeLinksBaseActivity(),
     UIPresentation {
 
     protected lateinit var activity: Activity
     protected lateinit var context: Context
+    protected lateinit var immersionBar: ImmersionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context = this
         activity = this
+        immersionBar = ImmersionBar.with(activity)
     }
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        immersionBar()
+        withImmersionBar()
         init()
     }
 
     // 初始化状态栏
-    protected open fun immersionBar() {
-        ImmersionBar.with(activity)
+    protected open fun withImmersionBar() {
+        immersionBar
             .transparentStatusBar() //透明状态栏
             .statusBarDarkFont(true) //状态栏字体是深色
             .navigationBarColor(R.color.white) //导航栏颜色
-            .navigationBarDarkIcon(true) //导航栏图标是深色，不写默认为亮色
+            .navigationBarDarkIcon(true) //导航栏图标是深色
             .init() //通过上面配置后初始化后方可成功调用
     }
 
@@ -91,6 +93,5 @@ abstract class SimpleActivty() : LifeLinksBaseActivity(),
             })
         }
     }
-
 
 }

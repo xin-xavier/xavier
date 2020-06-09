@@ -7,11 +7,11 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.xavier.utils.GlideEngineLoging
 import com.example.xavier.MainActivity
 import com.example.xavier.R
-import com.example.xavier.base.viewstratum.activity.SimpleActivty
+import com.example.xavier.base.viewstratum.activity.SimpleActivity
 import com.example.xavier.utils.Utils
 import kotlinx.android.synthetic.main.activity_guide.*
 
-class GuideActivity : SimpleActivty() {
+class GuideActivity : SimpleActivity() {
 
     private val guides = arrayListOf<Int>(
         R.drawable.guide,
