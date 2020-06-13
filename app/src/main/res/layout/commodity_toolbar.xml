@@ -1,37 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/toolbarLayout"
     android:layout_width="match_parent"
-    android:layout_height="375dp">
-
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:is_infinite_loop="false"
-        app:layout_constraintTop_toTopOf="parent"/>
+    android:layout_height="40dp">
 
     <ImageView
         android:id="@id/returnPager"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         android:layout_marginStart="17dp"
-        android:contentDescription="@string/imageView"
         android:scaleType="fitCenter"
-        android:src="@drawable/return_pager" />
+        android:contentDescription="@string/imageView"
+        android:src="@drawable/return_pager"/>
 
     <ImageView
         android:id="@id/navMenu"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_alignTop="@+id/returnPager"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:layout_marginEnd="17dp"
-        android:contentDescription="@string/imageView"
         android:scaleType="fitCenter"
-        android:src="@drawable/nav_menu" />
+        android:contentDescription="@string/imageView"
+        android:src="@drawable/nav_menu"/>
 
     <!--tablayout-->
     <!--设置文字的外貌-->
@@ -41,17 +35,17 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_alignTop="@+id/returnPager"
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="17dp"
         android:layout_toStartOf="@+id/navMenu"
         android:layout_toEndOf="@+id/returnPager"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
         app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@color/mainOrange"
         app:tabTextAppearance="@style/tabLayoutTextSize"
-        app:tabTextColor="@color/colorAccent" />
+        app:tabTextColor="@color/colorAccent"/>
 
 
 </RelativeLayout>

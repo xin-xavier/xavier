@@ -2,7 +2,6 @@ package com.example.xavier.main
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,7 +13,7 @@ import com.example.xavier.R
 import com.example.xavier.app.api.ConstantPool.Companion.BIG_SCALE
 import com.example.xavier.app.api.ConstantPool.Companion.LITTLE_SCALE
 import com.example.xavier.app.api.FieldConstant.Companion.PAGE_NAME
-import com.example.xavier.base.viewstratum.fragment.BaseSelfishnessFragment
+import com.example.xavier.base.viewstratum.fragment.BaseWithBarFragment
 import com.example.xavier.bean.result.TopClassResult
 import com.example.xavier.main.home.HomeContract
 import com.example.xavier.main.home.HomePresenter
@@ -28,7 +27,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerInd
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.CommonPagerTitleView
 
-class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract.View>>(),
+class HomeFragment : BaseWithBarFragment<HomeContract.Presenter<HomeContract.View>>(),
     HomeContract.View {
 
     private var pageName: String? = null
@@ -79,26 +78,18 @@ class HomeFragment : BaseSelfishnessFragment<HomeContract.Presenter<HomeContract
                     object : CommonPagerTitleView.OnPagerTitleChangeListener {
 
                         override fun onSelected(index: Int, totalCount: Int) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                title.setTextAppearance(R.style.SkinCompatTextAppearance_titleSelectColor)
-                            } else {
-                                title.setTextAppearance(
-                                    context,
-                                    R.style.SkinCompatTextAppearance_titleSelectColor
-                                )
-                            }
+                            title.setTextAppearance(
+                                context,
+                                R.style.SkinCompatTextAppearance_titleSelectColor
+                            )
                             indicator.visibility = View.VISIBLE
                         }
 
                         override fun onDeselected(index: Int, totalCount: Int) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                title.setTextAppearance(R.style.SkinCompatTextAppearance_titleUnSelectColor)
-                            } else {
-                                title.setTextAppearance(
-                                    context,
-                                    R.style.SkinCompatTextAppearance_titleSelectColor
-                                )
-                            }
+                            title.setTextAppearance(
+                                context,
+                                R.style.SkinCompatTextAppearance_titleUnSelectColor
+                            )
                             indicator.visibility = View.GONE
                         }
 

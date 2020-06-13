@@ -5,40 +5,43 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 class RetrofitFactory {
 
-    static Retrofit apiFactory() {
-        return gsonFactory()
-                .baseUrl(DNSConfig.getInstance().getApiUrl())
-                .build();
-    }
-
-    static Retrofit apiServerFactory() {
-        return gsonFactory()
-                .baseUrl(DNSConfig.getInstance().getApiServerUrl())
-                .build();
-    }
-
-    static Retrofit scalarsApiServerFactory() {
-        return scalarsFactory()
-                .baseUrl(DNSConfig.getInstance().getApiServerUrl())
-                .build();
-    }
-
-    private static Retrofit.Builder gsonFactory() {
+    static Retrofit apiServerRetrofit() {
         return new Retrofit.Builder()
+                .baseUrl(DNSConfig.getInstance().getApiServerUrl())
                 .client(XavierHttpClient.getInstance().getOkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
     }
 
-    private static Retrofit.Builder scalarsFactory() {
+    static Retrofit apiRetrofit() {
         return new Retrofit.Builder()
+                .baseUrl(DNSConfig.getInstance().getApiUrl())
                 .client(XavierHttpClient.getInstance().getOkHttpClient())
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+    }
+
+    static Retrofit gsonApiServerRetrofit() {
+        return new Retrofit.Builder()
+                .baseUrl(DNSConfig.getInstance().getApiServerUrl())
+                .client(XavierHttpClient.getInstance().getOkHttpClient())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+    }
+
+    static Retrofit scalarsApiServerRetrofit() {
+        return new Retrofit.Builder()
+                .baseUrl(DNSConfig.getInstance().getApiServerUrl())
+                .client(XavierHttpClient.getInstance().getOkHttpClient())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
     }
 
 }

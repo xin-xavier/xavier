@@ -12,6 +12,7 @@ import com.example.xavier.app.api.ConstantPool.Companion.DETAIL
 import com.example.xavier.app.api.ConstantPool.Companion.RECOMMEND
 import com.example.xavier.app.api.ConstantPool.Companion.WORD_OF_MOUTH
 import com.example.xavier.app.api.FieldConstant.Companion.GID
+import com.example.xavier.base.viewstratum.activity.BaseDecorViewActivity
 import com.example.xavier.base.viewstratum.activity.BaseSelfishnessActivity
 import com.example.xavier.bean.result.dataclass.DetailsData
 import com.example.xavier.bean.viewholder.VideoHolder
@@ -26,7 +27,7 @@ import com.youth.banner.listener.OnPageChangeListener
 import kotlinx.android.synthetic.main.details_toolbar.*
 
 class CommodityDetailsActivity :
-    BaseSelfishnessActivity<DetailsContract.Presenter<DetailsContract.View>>(),
+    BaseDecorViewActivity<DetailsContract.Presenter<DetailsContract.View>>(),
     DetailsContract.View {
 
     private var gid = -1
@@ -49,17 +50,13 @@ class CommodityDetailsActivity :
     }
 
     override fun onPrepare() {
-        super.onPrepare()
-
-        //appbarBg.setImageResource(R.mipmap.sona_buvelle)
-
         ViewGroupHelper.setTopMargin(returnPager, BarUtils.getStatusBarHeight())
 
-        bannerAdapter=BannerHaveVideoAdapter(context, imageList)
+        //bannerAdapter=BannerHaveVideoAdapter(context, imageList)
 
-        banner.adapter=bannerAdapter
-        banner.setIndicator( NumIndicator(this))
-            //.setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
+        /*banner.adapter=bannerAdapter
+        banner.setIndicator(NumIndicator(this))
+            .setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
             .addOnPageChangeListener(object : OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {
                 }
@@ -87,7 +84,7 @@ class CommodityDetailsActivity :
                 override fun onPageSelected(position: Int) {
                 }
 
-            })
+            })*/
 
 
         tabLayout.addTab(tabLayout.newTab().setText(COMMODITY))
@@ -107,7 +104,7 @@ class CommodityDetailsActivity :
         if(images!=null && images.size >0){
             imageList.addAll(images)
         }
-        bannerAdapter.notifyDataSetChanged()
+       // bannerAdapter.notifyDataSetChanged()
     }
 
     override fun showError(error: String) {
@@ -115,7 +112,7 @@ class CommodityDetailsActivity :
     }
 
     override fun toolbarLayoutRes(): Int {
-        return R.layout.details_toolbar
+        return R.layout.commodity_toolbar
     }
 
     override fun createPresenter(): DetailsContract.Presenter<DetailsContract.View>? {

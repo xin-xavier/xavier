@@ -27,6 +27,7 @@ import static com.example.xavier.app.api.ConstantPool.CHCHE_CONTROL;
 import static com.example.xavier.app.api.ConstantPool.OK_CACHE_DIR;
 import static com.example.xavier.app.api.ConstantPool.OK_CACHE_SIZE;
 import static com.example.xavier.app.api.ConstantPool.OK_CACHE_STALE_SEC;
+import static com.example.xavier.app.api.ConstantPool.OK_JSON;
 import static com.example.xavier.app.api.ConstantPool.OK_TAG;
 import static com.example.xavier.app.api.ConstantPool.PRAGMA;
 import static com.example.xavier.app.api.FieldConstant.MODEL;
@@ -115,7 +116,7 @@ public class XavierHttpClient {
                         public void log(@NotNull String message) {
                             //Log.i(OK_TAG, message);
                             XavierLogUtils.INSTANCE.longInfo(OK_TAG,message);
-                            //XavierLogUtils.INSTANCE.jsonInfo(OK_TAG,message);
+                            XavierLogUtils.INSTANCE.jsonInfo(OK_JSON,message);
                         }
                     });
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

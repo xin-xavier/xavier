@@ -9,9 +9,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.blankj.utilcode.util.BarUtils
+import com.blankj.utilcode.util.SizeUtils
 import com.example.xavier.R
+import com.example.xavier.app.api.ConstantPool
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 import com.example.xavier.widght.helper.AppbarHelper
+import kotlinx.android.synthetic.main.layout_actionbar_view.*
 import kotlinx.android.synthetic.main.layout_init_toobar_view.*
 
 abstract class SimpleDecorViewFragment : SimpleFragment(), OnPrepareListener {
@@ -36,9 +39,11 @@ abstract class SimpleDecorViewFragment : SimpleFragment(), OnPrepareListener {
     private fun initLayout(@LayoutRes layoutResID: Int, container: ViewGroup?): View {
         val view = inflater.inflate(layoutResID, container, false)
 
-        val height = view.findViewById<FrameLayout>(R.id.toolbarLayoutContent).layoutParams.height
-        val appbarHeight: Int = BarUtils.getStatusBarHeight() + height
-        view.findViewById<FrameLayout>(R.id.appbarLayout).layoutParams.height = appbarHeight
+        val toolbarLayoutHeight = SizeUtils.dp2px(ConstantPool.ACTION_BAR_SIZE)
+        view.findViewById<FrameLayout>(R.id.toolbarLayoutContent).layoutParams.height = toolbarLayoutHeight
+        val statusBarHeight = BarUtils.getStatusBarHeight()
+        //Log.i(TAG, "initContentView: statusBarHeight = ${SizeUtils.px2dp(statusBarHeight.toFloat())}")
+        view.findViewById<FrameLayout>(R.id.appbarLayout).layoutParams.height= statusBarHeight + toolbarLayoutHeight
 
         setToolbar(toolbarLayoutRes())
 

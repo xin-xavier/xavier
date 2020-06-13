@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.xavier.R
 import com.example.xavier.base.viewstratum.fragment.SimpleDecorViewFragment
+import com.example.xavier.utils.GlideEngineLoging
+import kotlinx.android.synthetic.main.fragment_blank.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -22,7 +24,7 @@ class BlankFragment : SimpleDecorViewFragment() {
     }
 
     override fun init() {
-
+        GlideEngineLoging.createGlideEngine().loadDefaultMapImage(context,"https://upload.chengmeiyouxuan.com/upload_pic_ÂÌÒ¶.jpg",image)
     }
 
     override fun onPrepare() {

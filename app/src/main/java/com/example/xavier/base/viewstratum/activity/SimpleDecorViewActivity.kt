@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.FragmentTransaction
 import com.blankj.utilcode.util.BarUtils
+import com.blankj.utilcode.util.SizeUtils
 import com.example.xavier.R
+import com.example.xavier.app.api.ConstantPool.Companion.ACTION_BAR_SIZE
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 import com.example.xavier.widght.helper.AppbarHelper
 import kotlinx.android.synthetic.main.layout_actionbar_view.*
@@ -19,7 +21,7 @@ abstract class SimpleDecorViewActivity : SimpleActivity(), OnPrepareListener {
 
     private lateinit var inflater: LayoutInflater
     private lateinit var parentLinearLayout: LinearLayout
-    private lateinit var appbarHelper : AppbarHelper
+    private lateinit var appbarHelper: AppbarHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,15 +53,17 @@ abstract class SimpleDecorViewActivity : SimpleActivity(), OnPrepareListener {
         inflater = LayoutInflater.from(context)
         inflater.inflate(initLayoutResID, parentLinearLayout, true)
 
-        val height = toolbarLayoutContent.layoutParams.height
-        val appbarHeight: Int = BarUtils.getStatusBarHeight() + height
-        appbarLayout.layoutParams.height = appbarHeight
+        val toolbarLayoutHeight = SizeUtils.dp2px(ACTION_BAR_SIZE)
+        toolbarLayoutContent.layoutParams.height = toolbarLayoutHeight
+        val statusBarHeight = BarUtils.getStatusBarHeight()
+        //Log.i(TAG, "initContentView: statusBarHeight = ${SizeUtils.px2dp(statusBarHeight.toFloat())}")
+        appbarLayout.layoutParams.height = statusBarHeight + toolbarLayoutHeight
 
         setToolbar(toolbarLayoutRes())
     }
 
     open fun setToolbar(@LayoutRes toolbarLayoutResID: Int) {
-        val beginTransaction : FragmentTransaction= supportFragmentManager.beginTransaction()
+        val beginTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         appbarHelper =
             AppbarHelper(
                 toolbarLayoutResID,

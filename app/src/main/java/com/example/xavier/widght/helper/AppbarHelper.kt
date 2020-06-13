@@ -34,8 +34,8 @@ class AppbarHelper : SimpleFragment, View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         rootView.let {
             rootHeight = rootView?.layoutParams?.height!!
-            val px2dp = SizeUtils.px2dp(rootHeight.toFloat())
-            Log.i(TAG, "onViewCreated: rootHeight = $contentLayoutId --- px2dp = $px2dp")
+            //val px2dp = SizeUtils.px2dp(rootHeight.toFloat())
+            //Log.i(TAG, "onViewCreated: rootHeight = $contentLayoutId --- px2dp = $px2dp")
         }
         if (contentLayoutId != 0) {
             when (contentLayoutId) {

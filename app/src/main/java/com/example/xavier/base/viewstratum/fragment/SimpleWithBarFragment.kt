@@ -12,7 +12,7 @@ import com.example.xavier.R
 import com.example.xavier.base.viewstratum.presentation.OnPrepareListener
 import com.example.xavier.widght.helper.AppbarHelper
 
-abstract class SelfishnessFragment : SimpleFragment(), OnPrepareListener {
+abstract class SimpleWithBarFragment : SimpleFragment(), OnPrepareListener {
 
     protected lateinit var inflater: LayoutInflater
     protected lateinit var toolbarHelper: AppbarHelper

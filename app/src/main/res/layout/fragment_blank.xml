@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".reserved.BlankFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_height="375dp"
+        android:contentDescription="@string/imageView" />
 </FrameLayout>

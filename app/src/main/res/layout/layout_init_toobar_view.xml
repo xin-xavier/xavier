@@ -13,7 +13,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="17dp"
         android:contentDescription="@string/imageView"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:src="@drawable/return_pager" />
 
     <ImageView
@@ -24,7 +24,7 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="17dp"
         android:contentDescription="@string/imageView"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:src="@drawable/nav_menu" />
 
     <TextView

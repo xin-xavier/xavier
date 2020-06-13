@@ -11,6 +11,7 @@ public interface ConstantPool {
         const val XAVIER = "Xavier"
 
         const val OK_TAG = "OKHttpClient"
+        const val OK_JSON = "OKHttpJson"
         const val OK_CACHE_STALE_SEC = 60 * 60 * 24 * 2.toLong() // 设缓存有效期为两天
         const val OK_CACHE_SIZE = 1024 * 1024 * 100 // 设缓存为100M
         const val OK_CACHE_DIR = "cacheDir" // 缓存路径
@@ -46,6 +47,7 @@ public interface ConstantPool {
         const val GRAY_SERVICE_ID = 9501
         const val SETTING_FOR_RESULTCODE = 100
 
+        const val ACTION_BAR_SIZE=40f
         const val SIZE_MULTIPLIER = 0.6f
         const val DEFAULT_RADIUS = 4
         const val EDGE_DISTANCE = 12f
