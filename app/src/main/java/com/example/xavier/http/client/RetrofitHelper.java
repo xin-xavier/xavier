@@ -15,6 +15,7 @@ public class RetrofitHelper {
 
     static {
         apiService = RetrofitFactory.apiServerRetrofit().create(Server.class);
+        Log.i("RetrofitHelper", "static initializer: "+apiService);
     }
 
     private RetrofitHelper() { }
@@ -25,10 +26,10 @@ public class RetrofitHelper {
 
     public static Server getApi() {
         if (api == null) {
-            Log.i("RetrofitHelper", "getApi: ");
             synchronized (Server.class) {
                 if (api == null) {
                     api = RetrofitFactory.apiRetrofit().create(Server.class);
+                    Log.i("RetrofitHelper", "getApi: "+api);
                 }
             }
         }
